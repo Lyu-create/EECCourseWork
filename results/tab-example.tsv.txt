@@ -1,5 +1,0 @@
-Planet Type Moons Distance_AU
-Mercury Terrestrial 0 0.39
-Venus Terrestrial 0 0.72
-Earth Terrestrial 1 1.00
-Mars Terrestrial 2 1.52
