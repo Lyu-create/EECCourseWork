@@ -24,17 +24,3 @@ mkdir -p ~/Documents/EECCourseWork/results
 tr "\t" "," < "$1" > ~/Documents/EECCourseWork/results/"$1".csv
 
 echo "Done!"
-
-# The rerun appends to the previous, creating a copy of the previous run.
-# It is caused by ">>"
-
-#printf 'oak\t\t12\n' | tr -s '\t' ','
-#printf 'oak\t\t12\n' | tr '\t' ','
-
-#cp "$shell_practice/test.txt" "$shell_practice/field notes.txt"
-#bash tabtocsv.sh "$shell_practice/field notes.txt"
-#echo "$?"
-
-#sample_pattern="$shell_practice/*.txt"
-#printf '<%s>\n' "$sample_pattern"
-#printf '<%s>\n' $sample pattern

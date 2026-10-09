@@ -24,4 +24,5 @@ C=$(grep -o "C" e_coli.fasta | wc -l)
 G=$(grep -o "G" e_coli.fasta | wc -l)
 
 echo "scale=3; ($A + $T)/($C + $G)" | bc
+# count the number of each base and then sum A with T and C with G and then divide
 

@@ -3,7 +3,7 @@
 # Script: csvtospace.sh
 # Desc: substitute the comma in the file with space
 #       save the output into a .txt file
-# Arguments: 1-> tab delimited file
+# Arguments: 1-> comma delimited file
 # Date: Oct 2026
 
 echo "Creating a space delimited version of $1 ..."
