@@ -17,3 +17,6 @@ __pycache__/
 code/ConcatenateTwoFiles.sh
 code/CountLines.sh
 code/tiff2_png.sh
+
+# Whitelist, preserving temperature csv data
+!data/temperatures/*.csv
