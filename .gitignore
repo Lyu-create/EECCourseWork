@@ -1,0 +1,19 @@
+# Ignore csv files
+*.csv
+
+# Ignore specific fasta files
+data/fasta/toy.fasta
+
+# Ignore all Python files and their compiled bytecode
+.py
+*.py[co]
+__pycache__/
+
+# Ignore temporary files
+*~
+*.tmp
+
+# Ignore these specific shell scripts
+code/ConcatenateTwoFiles.sh
+code/CountLines.sh
+code/tiff2_png.sh
