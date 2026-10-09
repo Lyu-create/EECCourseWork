@@ -2,7 +2,7 @@
 wc -l 407228326.fasta # count newline character 27
 wc -l 407228412.fasta # 127
 wc -l e_coli.fasta # 78104
-# The header is excluded
+# The last line is not counted as a new line because -l only counts the number of "\n"s
 
 # 2
 tail -n +2 e_coli.fasta # print all the bases
