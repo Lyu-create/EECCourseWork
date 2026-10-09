@@ -1,0 +1,27 @@
+# 1 
+wc -l 407228326.fasta # count newline character 27
+wc -l 407228412.fasta # 127
+wc -l e_coli.fasta # 78104
+# The header is excluded
+
+# 2
+tail -n +2 e_coli.fasta # print all the bases
+# tail -n +2 means removing the header by showing the sequence from the second line
+
+# 3
+tail -n +2 e_coli.fasta | wc -m 
+# excluding the head and then piping to count the number of characteristics, 4764240
+
+# 4
+tail -n +2 e_coli.fasta | tr -d "\n" |grep -o "ATGC" | wc -l
+# Excluding the head and then removing the newlines so all sequnece is in oneline and then find the exact pattern
+# 21968
+
+# 5
+A=$(grep -o "A" e_coli.fasta | wc -l)
+T=$(grep -o "T" e_coli.fasta | wc -l)
+C=$(grep -o "C" e_coli.fasta | wc -l)
+G=$(grep -o "G" e_coli.fasta | wc -l)
+
+echo "scale=3; ($A + $T)/($C + $G)" | bc
+
