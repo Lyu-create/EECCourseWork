@@ -28,4 +28,5 @@ use command bash code.sh directory/filename.sh when in the code directory
 all data is in the data folder
 
 Author: Xinyi Lyu
-email: xl6226@ic.ac.uk
+email: xl6226@ic.ac.uki am trying a new naughty thing on this experiment branch!
+i am trying a new naughty thing on this experiment branch!
