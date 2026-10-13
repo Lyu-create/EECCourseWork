@@ -4,8 +4,7 @@
 # Ignore specific fasta files
 data/fasta/toy.fasta
 
-# Ignore all Python files and their compiled bytecode
-.py
+# Ignore Python compiled bytecode
 *.py[co]
 __pycache__/
 
