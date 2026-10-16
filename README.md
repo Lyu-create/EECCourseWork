@@ -27,6 +27,95 @@ use command bash code.sh directory/filename.sh when in the code directory
 
 all data is in the data folder
 
+--linux,bash,shell script project
+data location
+
+---------------------------------------------------------------
+--python project: cleaning up silwood tree data
+data location:/data/silwood_trees_raw.csv and silwood_trees_metadata.md
+
+input: `record_id` | Survey-record identifier; `location` | Synthetic survey location;`genus` | Tree genus;  `species` | Tree species epithet; `distance_m` | Horizontal distance from observer to tree, in metres; `angle_degrees` | Angle from horizontal to treetop, in degrees
+
+final output: three file in results
+1. cleaned data with no spaces at the begining or end of variables (results/silwood_trees_clean.csv)
+2. source row, reacord id and rejected reasons (results/silwood_tree_issues.csv)
+3. the total number of valid oaks by species (results/oak_species_counts.csv)
+
+pseudocodes
+-- for validate_record function:
+create a empty list for rejection reasons
+
+clean record id by moving surrounding whitespace, assign it to clean_record_id
+checking record_id
+    if missing record_id, add "missing record_id" to reasons
+    if record_id does not start with ST or end with three digits (five characters in total), add "invalid record_id" to reasons
+    if record_id is in accpted_ids, add "duplicate record_id" to reasons
+
+clean location by moving surrounding whitespace, assign it to clean_location
+define a set with valid_locations shown in the metadata
+define valid_locations_fold being case insensitive of valid_location using a loop
+check location
+    if missing location, add "missing location" to reasons
+    if location not in valid_locations, add "invalid location" to reasons
+save the caseinsensitive location into clean_location
+
+clean genus by moving surrounding whitespace, assign it to clean_genus
+define a set with valid_genus shown in the metadata
+define valid_genus_fold being case insensitive of valid_genus using a loop
+check genus
+    if missing genus, add "missing genus" to reasons
+    if genus not in valid_genus, add "invalid genus" to reasons
+save the caseinsensitive genus into clean_genus
+
+clean species by moving surrounding whitespace, assign it to clean_species
+define a set with valid_species shown in the metadata
+define valid_species_fold being case insensitive of valid_species using a loop
+check species
+    if missing species, add "missing species" to reasons
+    if species not in valid_species, add "invalid species" to reasons
+save the caseinsensitive species into clean_species
+
+check for genus and species combination
+    if the genus and species are all in valid_genus and valid_species but the combination is not a valid combination, add "invalid genus/species combination" to reasons
+
+check distance
+    if missing distance, add "missing distance_m" to reasons
+    if the distance is inf or nan or cannot be converted into a number, add "invalid distance_m" to reasons
+    if the distance can be converted into a number and is greater than 100 or no greater than 0, add "distance_m out of range"
+
+check angle
+    if missing angle, add "missing angle_degree" to reasons
+    if the angle is inf or nan or cannot be converted into a number, add "invalid angle_degree" to reasons
+    if the angle can be converted into a number and is no greater than 0 or no smaller than 90, add "angle_degree out of range" 
+
+each block checks a different validation rule so the function collects all reasons from each and then generate the output
+
+output:tuple[dict[str, str] | None, list[str]]
+invalid records are rows that failed at least one test above, returning to None and a list of reasons
+valid records are rows that passed all tests, returning to cleaned dictionary of column names, values and an empty list of reasons
+
+-- for process_record function:
+intialise variables: clean_records and issue list, accepted_ids set as empty
+loop through all the rows starting from line 2
+call validation_record function for each row
+check whether a cleaned_row for the cleaned_records is returned
+    if there is a clean row, add it to the clean_record list
+    if there is nothing, store the line number, record id and reasons and add the rejection reasons to the issue list
+Sort the accepted records in ascending order by record_id.
+return to list of accepted record rows and rejected record with the rejection reasons
+
+-- for summarise_oaks function: 
+intialise oak count as empty list
+set the count of Quercus robur and Quercus petraea as 0
+For each row in clean_records
+    if the species is Quercus robur
+        increase Quercus robur count by one
+    or if the species is Quercus petraea
+        increase Quercus petraea count by one
+For each oak species, if its count is greater than zero, add a row containing the species name and its count to the oak_counts list.
+Return the oak_counts list containing the species and their counts.
+
+I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, checking the grammar errors in my script.
+
 Author: Xinyi Lyu
-email: xl6226@ic.ac.uki am trying a new naughty thing on this experiment branch!
-i am trying a new naughty thing on this experiment branch!
+email: xl6226@ic.ac.uk
