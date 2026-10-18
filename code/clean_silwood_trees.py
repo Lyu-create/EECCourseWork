@@ -7,7 +7,7 @@ import csv
 from pathlib import Path
 from typing import Iterable
 
-import math
+import math # checking for infinite and nan values at the same time
 
 # PROJECT_ROOT = Path.cwd().resolve().parent
 PROJECT_ROOT = Path(__file__).resolve().parents[1]

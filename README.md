@@ -41,6 +41,16 @@ final output: three file in results
 2. source row, reacord id and rejected reasons (results/silwood_tree_issues.csv)
 3. the total number of valid oaks by species (results/oak_species_counts.csv)
 
+run the code by using the command from the project root using: python3 code/clean_silwood_trees.py
+
+testing the code by asserting validate_record, process_records and summarise_oaks by giving normal and error_expected cases.
+
+limitations: 
+In the validate_record function the recognised genus and species are limited, so need updating valid_genus, valid_species, valid_comb maually. Location also have the same restriction. In the summarise_oaks function, only two species are recognised.
+It does not handle well large data set but sufficeint for small teaching data set, also due to this purpose, the data may not reflect real fieldwork data.
+
+
+
 pseudocodes
 -- for validate_record function:
 create a empty list for rejection reasons
@@ -114,6 +124,7 @@ For each row in clean_records
         increase Quercus petraea count by one
 For each oak species, if its count is greater than zero, add a row containing the species name and its count to the oak_counts list.
 Return the oak_counts list containing the species and their counts.
+
 
 I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, generating test data, checking the grammar errors in my script.
 
