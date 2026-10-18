@@ -115,7 +115,7 @@ For each row in clean_records
 For each oak species, if its count is greater than zero, add a row containing the species name and its count to the oak_counts list.
 Return the oak_counts list containing the species and their counts.
 
-I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, checking the grammar errors in my script.
+I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, generating test data, checking the grammar errors in my script.
 
 Author: Xinyi Lyu
 email: xl6226@ic.ac.uk
