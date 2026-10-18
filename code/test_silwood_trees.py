@@ -265,6 +265,26 @@ assert validate_record({
     ["distance_m out of range"]
 )
 
+# testing boundary value, should accept 100
+assert validate_record({
+    "record_id": "ST014",
+    "location": "Silwood Bottom",
+    "genus": "Quercus",
+    "species": "petraea",
+    "distance_m": "100",
+    "angle_degrees": "24.0",
+}, 1, set()) == (
+    {
+        "record_id": "ST014",
+        "location": "Silwood Bottom",
+        "genus": "Quercus",
+        "species": "petraea",
+        "distance_m": 100.0,
+        "angle_degrees": 24.0,
+    },
+    []
+)
+
 # 14. missing angle_degrees
 assert validate_record({
     "record_id": "ST014",
@@ -533,6 +553,7 @@ assert process_records([
         },
     ],
 )
+
 
 ## sumarise oaks
 # normal case counting both aok species
