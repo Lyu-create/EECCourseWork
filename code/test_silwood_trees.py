@@ -358,6 +358,26 @@ assert validate_record({
     ["angle_degrees out of range"]
 )
 
+# 17. case-insensitive cleaning
+assert validate_record({
+    "record_id": "ST014",
+    "location": "SILWOOD BOTTOM",
+    "genus": "quercus",
+    "species": "PETRAEA",
+    "distance_m": "21.4",
+    "angle_degrees": "24.0",
+}, 1, set()) == (
+    {
+        "record_id": "ST014",
+        "location": "Silwood Bottom",
+        "genus": "Quercus",
+        "species": "petraea",
+        "distance_m": 21.4,
+        "angle_degrees": 24.0,
+    },
+    []
+)
+
 
 ## process records
 # normal case with valid and invalid records
@@ -476,6 +496,43 @@ assert process_records([
     ],
 )
 
+# invalid records do not reserve record_id
+assert process_records([
+    {
+        "record_id": "ST015",
+        "location": "London",
+        "genus": "Quercus",
+        "species": "robur",
+        "distance_m": "12",
+        "angle_degrees": "36",
+    },
+    {
+        "record_id": "ST014",
+        "location": "Silwood Bottom",
+        "genus": "Quercus",
+        "species": "robur",
+        "distance_m": "12",
+        "angle_degrees": "36",
+    },
+]) == (
+    [
+        {
+            "record_id": "ST014",
+            "location": "Silwood Bottom",
+            "genus": "Quercus",
+            "species": "robur",
+            "distance_m": 12.0,
+            "angle_degrees": 36.0,
+        },
+    ],
+    [
+        {
+            "source_row": 2,
+            "record_id": "ST015",
+            "reasons": "invalid location",
+        },
+    ],
+)
 
 ## sumarise oaks
 # normal case counting both aok species
