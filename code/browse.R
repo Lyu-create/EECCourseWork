@@ -9,7 +9,7 @@ Exponential <- function(N0 = 1, r = 1, generations = 10) {
     N[t] <- N[t-1] * exp(r)
     browser()
   }
-  return(N)
+  return (N)
 }
 
 plot(Exponential(), type="l", main="Exponential growth")
