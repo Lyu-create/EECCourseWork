@@ -1,5 +1,6 @@
-# Ignore csv files
-*.csv
+# ignore results and sandbox folders
+results/
+sandbox/
 
 # Ignore specific fasta files
 data/fasta/toy.fasta
