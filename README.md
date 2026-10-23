@@ -29,9 +29,30 @@ all data is in the data folder
 
 --linux,bash,shell script project
 data location
+---------------------------------------------------------------
+Assigmment 3 (R)
+1.1 Treeheight calculation
+- Run command from project root:  Rscript code/TreeHeight.R in linux and source("code/TreeHeight.R") in terminal
+- input path: data/trees.csv
+- output path: results/TreeHts.csv
+- checked record: "Carpinus betulus",39.501561964862,30.2981362491846"
+```r
+39.501561964862 * tan (30.2981362491846 * pi / 180)
+[1] 23.08113
+```
+Consistent with the value in TreeHts.csv "23.0811254247168"
+
+1.2 generalise tree-height script
+- Run command from project root:  bash code/run_get_TreeHeight.sh
+- input path: data/trees.csv
+- output path: results/trees_treeheights.csv
+- filename limitation: Different input paths with the same basename will produce the same output filename in results/
+
+2. pound_hill data visulisation and interpretation
 
 ---------------------------------------------------------------
---python project: cleaning up silwood tree data
+Assigment 2 (python)
+python project: cleaning up silwood tree data
 data location:/data/silwood_trees_raw.csv and silwood_trees_metadata.md
 
 input: `record_id` | Survey-record identifier; `location` | Synthetic survey location;`genus` | Tree genus;  `species` | Tree species epithet; `distance_m` | Horizontal distance from observer to tree, in metres; `angle_degrees` | Angle from horizontal to treetop, in degrees
@@ -124,6 +145,9 @@ For each row in clean_records
         increase Quercus petraea count by one
 For each oak species, if its count is greater than zero, add a row containing the species name and its count to the oak_counts list.
 Return the oak_counts list containing the species and their counts.
+
+---------------------------------------------------------------
+Assignment 1 (bash)
 
 
 I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, generating test data, checking the grammar errors in my script.
