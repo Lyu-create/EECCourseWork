@@ -21,3 +21,4 @@ code/tiff2_png.sh
 !data/temperatures/*.csv
 !data/silwood_trees_metadata.md
 !data/silwood_trees_raw.csv
+!data/trees.csv
