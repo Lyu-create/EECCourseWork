@@ -3,12 +3,39 @@ My Git practice repository
 This repository is to hand in homework for bootscamp module in Imperial College London MRes Ecology, Evolution and Conservation.
 
 Current EECCourseWork project structure:
+Feedback
+
+    assignment-1-2026.md
+    assignment-2-2026.md
+
 code
 
+    TreeHeight.R
+    Vectorize1.R
+    apply1.R
+    apply2.R
+    basic_io.R
+    boilerplate.R
+    break.R
+    browse.R
+    clean_silwood_trees.py
+    control_flow.R
     csvtospace.sh
+    get_TreeHeight.R
+    next.R
+    oaks.py
+    pound_hill_analysis.R
+    preallocate.R
+    r_conditionals.R
+    run_get_TreeHeight.sh
+    sample.R
     tabtocsv.sh
+    test_silwood_trees.py
+    try.R
     unixPrac1.txt
+
 data
+
     fasta
         407228326.fasta
         407228412.fasta
@@ -18,20 +45,22 @@ data
         1801.csv
         1802.csv
         1803.csv
+    pound_hill_data.csv
+    pound_hill_meta_data.csv
+    silwood_trees_metadata.md
+    silwood_trees_raw.csv
     tab-example.tsv
+    trees.csv
+
+results
+sandbox
 .gitignore
 README.md
 
-Currently, the repository is all bash language
-use command bash code.sh directory/filename.sh when in the code directory
-
-all data is in the data folder
-
---linux,bash,shell script project
-data location
----------------------------------------------------------------
+--------------------------------------------------------------
 Assigmment 3 (R)
 1.1 Treeheight calculation
+This calculates heights of trees given distance of each tree from its base and angle to its top, using  the trigonometric formula 
 - Run command from project root:  Rscript code/TreeHeight.R in linux and source("code/TreeHeight.R") in terminal
 - input path: data/trees.csv
 - output path: results/TreeHts.csv
@@ -49,8 +78,12 @@ Consistent with the value in TreeHts.csv "23.0811254247168"
 - filename limitation: Different input paths with the same basename will produce the same output filename in results/
 
 2. pound_hill data visulisation and interpretation
+This data is to analyse mean plant species richness and abundance per plot varying among the March, May and October cultivation treatments.
+- Run command from project root: Rscript code/pound_hill_analysis.R
+- input path: data/pound_hill_data.csv and data/pound_hill_meta_data.csv
+- output path: results/pound_hill_plot_richness.csv, results/pound_hill_plot_richness.pdf, results/pound_hill_plot_abundance.pdf
 
----------------------------------------------------------------
+--------------------------------------------------------------
 Assigment 2 (python)
 python project: cleaning up silwood tree data
 data location:/data/silwood_trees_raw.csv and silwood_trees_metadata.md
@@ -146,7 +179,7 @@ For each row in clean_records
 For each oak species, if its count is greater than zero, add a row containing the species name and its count to the oak_counts list.
 Return the oak_counts list containing the species and their counts.
 
----------------------------------------------------------------
+--------------------------------------------------------------
 Assignment 1 (bash)
 
 
