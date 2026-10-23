@@ -22,3 +22,5 @@ code/tiff2_png.sh
 !data/silwood_trees_metadata.md
 !data/silwood_trees_raw.csv
 !data/trees.csv
+!data/pound_hill_data.csv
+!data/pound_hill_meta_data.csv
