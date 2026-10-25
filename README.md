@@ -182,7 +182,8 @@ Return the oak_counts list containing the species and their counts.
 --------------------------------------------------------------
 Assignment 1 (bash)
 1 DNA sequence practical
-input files: data/fasta/407228326.fasta, data/fasta/407228412.fasta and data/fasta/e_coli.fasta#
+input files: data/fasta/407228326.fasta, data/fasta/407228412.fasta and data/fasta/e_coli.fasta
+Run command from project root by copying question by question/line by line to the terminal
 
 2 converters
     limitations: converting one file at a time, change the symbol regardless of the input format
