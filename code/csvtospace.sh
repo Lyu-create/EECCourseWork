@@ -10,19 +10,23 @@ echo "Creating a space delimited version of $1 ..."
 
 # Check if theres only one input file, mutliple files will create an error
 if [ "$#" -ne 1 ]; then
-    echo "Error: Please provide exactly on input file" >&2
+    echo "Error: Please provide exactly one input file" >&2
     exit 1
 fi
 
 if [ ! -r "$1" ]; then
-    echo "Error: File '$1' can not be read"
+    echo "Error: File '$1' can not be read" >&2
     exit 2
 fi
 
+mkdir -p results
+
 filename=$(basename "$1")
+output="results/$filename.txt"
 
-mkdir -p ~/Documents/EECCourseWork/results
-
-tr "," " " < "$1" > ~/Documents/EECCourseWork/results/"$filename".txt
+if ! tr ',' ' ' < "$1" > "$output"; then
+    echo "Error: Conversion failed" >&2
+    exit 3
+fi
 
 echo "Done!"

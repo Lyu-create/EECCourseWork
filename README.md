@@ -57,6 +57,8 @@ sandbox
 .gitignore
 README.md
 
+## Clone or download the EECCourseWork repository and run all commands from the project root unless otherwise specified.
+
 --------------------------------------------------------------
 Assigmment 3 (R)
 1.1 Treeheight calculation
@@ -102,8 +104,6 @@ testing the code by asserting validate_record, process_records and summarise_oak
 limitations: 
 In the validate_record function the recognised genus and species are limited, so need updating valid_genus, valid_species, valid_comb maually. Location also have the same restriction. In the summarise_oaks function, only two species are recognised.
 It does not handle well large data set but sufficeint for small teaching data set, also due to this purpose, the data may not reflect real fieldwork data.
-
-
 
 pseudocodes
 -- for validate_record function:
@@ -181,8 +181,25 @@ Return the oak_counts list containing the species and their counts.
 
 --------------------------------------------------------------
 Assignment 1 (bash)
+1 DNA sequence practical
+input files: data/fasta/407228326.fasta, data/fasta/407228412.fasta and data/fasta/e_coli.fasta#
+
+2 converters
+    limitations: converting one file at a time, change the symbol regardless of the input format
+
+2.1 tabtocsv improved (tab-example.tsv can be substituted by other tsv files)
+input path: data/tab-example.tsv
+Run command from project root: bash code/tabtocsv.sh data/tab-example.tsv
+output path: results/tab-example.tsv.csv
+
+2.2 csvtospace (1800-1803.csv can be substituted by other csv files)
+input path: data/temperatures/1800.csv, data/temperatures/1801.csv, data/temperatures/1802.csv and data/temperatures/1803.csv
+run command from project root: bash code/csvtospace.sh data/temperatures/1800-1803.csv
+output path: results/1800-1803.csv.txt
 
 
+
+AI statement
 I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, generating test data, checking the grammar errors in my script.
 
 Author: Xinyi Lyu
