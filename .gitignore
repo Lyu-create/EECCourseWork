@@ -13,11 +13,6 @@ __pycache__/
 *~
 *.tmp
 
-# Ignore these specific shell scripts
-code/ConcatenateTwoFiles.sh
-code/CountLines.sh
-code/tiff2_png.sh
-
 # Whitelist assignment data
 !data/temperatures/*.csv
 !data/silwood_trees_metadata.md

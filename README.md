@@ -199,6 +199,12 @@ run command from project root: bash code/csvtospace.sh data/temperatures/1800-18
 output path: results/1800-1803.csv.txt
 
 
+---------------------------------------------------------------
+## other codes
+bash:
+- variables.sh; bash code/variables.sh
+- MyExampleScript.sh; bash code/MyExampleScript.sh
+- boilerplate.sh; bash code/boilerplate.sh
 
 AI statement
 I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, generating test data, checking the grammar errors in my script.
