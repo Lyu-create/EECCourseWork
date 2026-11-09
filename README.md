@@ -206,6 +206,43 @@ bash:
 - MyExampleScript.sh; bash code/MyExampleScript.sh
 - boilerplate.sh; bash code/boilerplate.sh
 
+
+
+R
+- observations_practice.R
+tested with data/bootcamp_observations_invalid.csv, giving an error mesage of "Count values must be non-negative integers".
+create a figure in results/known_totals.png
+
+- data_wrang
+- data_wrang_tidy.R
+    Use tidyr::pivot_longer(), tested with:
+
+```{r} 
+TempData_test <- data.frame(
+    Cultivation = c("March", "May"),
+    Block = c("A", "B"),
+    Plot = c(1, 2),
+    Quadrat = c("Q1", "Q2"),
+    Grass = c(10, 8),
+    Clover = c(5, 7),
+    Daisy = c(3, 2)
+)
+print(TempData_test)
+```
+This should give 2 rows, 7 columns (4 identifying columns and 3 species columns)
+
+```{r}
+MyWrangledData_test <- TempData_test |>
+  tidyr::pivot_longer(
+    cols = -c(Cultivation, Block, Plot, Quadrat),
+    names_to = "Species",
+    values_to = "Count"
+)
+print(MyWrangledData_test)
+```
+This should give 6 rows and 6 columns
+
+
 AI statement
 I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, generating test data, checking the grammar errors in my script.
 
