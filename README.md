@@ -209,9 +209,10 @@ bash:
 
 
 R
+- browse.R : debuging using browse() in a generated population, showing the values on each iteration.
 - observations_practice.R
 tested with data/bootcamp_observations_invalid.csv, giving an error mesage of "Count values must be non-negative integers".
-create a figure in results/known_totals.png
+create a figure in results/known_totals.png when using data/bootcamp_observations.csv.
 
 - data_wrang
 - data_wrang_tidy.R
