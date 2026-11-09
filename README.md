@@ -209,12 +209,26 @@ bash:
 
 
 R
-- browse.R : debuging using browse() in a generated population, showing the values on each iteration.
+- try.R: catch error using try() in generated random number, carry on the iteration even when error occurs
+    run in R console with source("code/try.R")
+
+- browse.R: debuging using browse() in a generated population, showing the values on each iteration.
+    run in R console with source("code/browse.R")
+    in this mode: Browse[1]>
+        n: execute the next line.
+        c: exit browser and continue execution
+        Q: exit browser and abort, return to top-level.
+        use N or t to see the list of values
+        ls() to insepct all variables in the function
+  
+  limtiation: need to know where about the bug is
+
 - observations_practice.R
 tested with data/bootcamp_observations_invalid.csv, giving an error mesage of "Count values must be non-negative integers".
 create a figure in results/known_totals.png when using data/bootcamp_observations.csv.
 
 - data_wrang
+
 - data_wrang_tidy.R
     Use tidyr::pivot_longer(), tested with:
 
