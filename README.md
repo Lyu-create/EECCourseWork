@@ -209,6 +209,9 @@ bash:
 
 
 R
+- r_conditionals.R: functions with conditionals, checking for even number, whether a number is a power of 2 and prime numbers.
+    run in R conole with source("code/r_conditionals.R")
+
 - break.R: control flow with break, breaking at a certain iteration
     run in R conole with source("code/break.R")
 
