@@ -209,9 +209,10 @@ bash:
 
 
 R
-- break.R
+- break.R: control flow with break, breaking at a certain iteration
+    run in R conole with source("code/break.R")
 
-- next.R: control flow with next(), checking and printing the odds numbers throughout iteration
+- next.R: control flow with next, checking and printing the odds numbers throughout iteration
     run in R conole with source("code/next.R")
 
 - try.R: catch error using try() in generated random number, carry on the iteration even when error occurs
