@@ -32,7 +32,7 @@ rownames(TempData) <- NULL
 
 # Convert from wide to long form ----------------------------------------
 # This script keeps the older reshape2 route because it is still common in
-# ecological code. For n?mew work, the chapter introduces tidyr::pivot_longer().
+# ecological code. For new work, the chapter introduces tidyr::pivot_longer().
 library(reshape2)
 
 MyWrangledData <- melt(
@@ -58,24 +58,3 @@ dim(MyWrangledData)
 # Save a derived table while leaving the raw files unchanged.
 dir.create("results", showWarnings = FALSE)
 write.csv(MyWrangledData, "results/pound_hill_long.csv", row.names = FALSE)
-
-# Explore the data below this line.
-library(dplyr)
-MyWrangledData <- dplyr::as_tibble(MyWrangledData)
-# or when no naming conflict MyWrangledData <- as_tibble(MyWrangledData)
-MyWrangledData
-class(MyWrangledData) #tibble similar to data.frame
-
-glimpse(MyWrangledData) # like str(), but neater
-
-utils::View(MyWrangledData) #same as fix()
-
-filter(MyWrangledData,Count>100)
-# like subset(), but can integrate with other select functions
-
-slice(MyWrangledData, 10:15) # look at a particular range of data rows
-
-MyWrangledData %>%
-    group_by(Species) %>%
-      summarise(avg = mean(Count))
-aggregate(MyWrangledData$Count, list(MyWrangledData$Species), FUN=mean)
