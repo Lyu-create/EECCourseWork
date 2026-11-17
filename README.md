@@ -1,6 +1,6 @@
 My Git practice repository
 
-This repository is to hand in homework for bootscamp module in Imperial College London MRes Ecology, Evolution and Conservation.
+This repository is to hand in homework for bootscamp module in Imperial College London MRes Ecology, Evolution and Conservation. The course books is MulQuaBio
 
 Current EECCourseWork project structure:
 Feedback
@@ -58,7 +58,6 @@ sandbox
 README.md
 
 ## Clone or download the EECCourseWork repository and run all commands from the project root unless otherwise specified.
-
 --------------------------------------------------------------
 Assigmment 3 (R)
 1.1 Treeheight calculation
@@ -201,14 +200,72 @@ output path: results/1800-1803.csv.txt
 
 ---------------------------------------------------------------
 ## other codes
-bash:
-- variables.sh; bash code/variables.sh
+bash scripts (7)
+----------------Shell scripting------------
+- variables.sh; bash code/variables.sh or with arguments
+    enter string and two number as the output required
+    sentense can be printed even without parameter, need "$#" to count the number of arguments
+
 - MyExampleScript.sh; bash code/MyExampleScript.sh
+    print login name that can be changes or unset. 
+    However whoami always show the effective user.
+
 - boilerplate.sh; bash code/boilerplate.sh
+    minal bash script: shebang(first line) telling computer to use Bash to readh the script;
+    comment notes using "#"
+    code is the scripts body, exit 0 means success but maybe not scientifically correct. Errors are captured with non-zeor values
+    good practice to name the file with the extension of its language
+
+- CheckLabel.sh
+    echo "$?" prints the exit status
+    run with code/CheckLabel.sh
+    argument is oak/pine -> oak/pine, 0
+    not equal to one argument -> Usage: code/CheckLabel.sh oak|pine, 2
+    one argument that is not oak -> Unknown label: <>, 1
+
+- CountLines.sh: count the number of lines using new line characters
+    bash code/CountLines.sh data/tab-example.tsv -> 4
+    use cat -A data/tab-example to inspect the number of new line characters "$"
+    or test in temporary directory:
+        shell_practice=$(mktemp -d)
+        printf 'species\tcount\noak\t12\n' > "$shell_practice/test.txt"
+        printf 'Practice data: %s\n' "$shell_practice"
+        bash code/CountLines.sh $shell_practice/test.txt -> 2
+
+- ConcatenateTwoFiles.sh
+    test in temporary directory: 
+        printf 'oak\n' > "$shell_practice/first.txt"
+        printf 'pine\n' > "$shell_practice/second.txt"
+        bash code/ConcatenateTwoFiles.sh "$shell_practice/first.txt" "$shell_practice/second.txt" "$shell_practice/combined.txt"
+    run the second time to check it does not duplicate the whole result
+
+- tiff2_png.sh
+    ImageMagick can be used to coenvert tiff to png is installed separately (not required here). Check with command -v magick and command -v convert, if absence, there will not be an output path.
+    free tiff can be downloaded from the website
+        if cannot find tiff image, use bash -n code/tiff2_png.sh to inspect syntax error but does not guarantee conversion success
+    test in temporary directory: 
+        project_root=$PWD
+        script_path=$project_root/code/tiff2_png.sh
+        mkdir "$shell_practice/images"
+        cd "$shell_practice/images"
+        pwd
+    with tiff image, check the files that will be produced with (replace the temp path with your own, make sure you are in the temporary directory)
+        for filename in *.tif
+        do
+            printf 'convert <%s> <%s>\n' "$filename" "$(basename "$filename" .tif).png" 
+        done
+        if cannot find the file, the output would be "convert <*.tif> <*.png>"
+    run the script with: bash $script_path
+    remember to return back to project root by cd $project_root
+    limitations: no matches, uppercase extensions, option-like filenames, output collisions, converter failure, adding optional directory argument. existing png may be overwritten.
 
 
+R scripts (11)
+----------------section: biological computing in R------------
+- basic_io.R 
+- boilerplate.R
+- control_flow.R
 
-R
 - r_conditionals.R: functions with conditionals, checking for even number, whether a number is a power of 2 and prime numbers.
     run in R conole with source("code/r_conditionals.R")
 
@@ -236,6 +293,7 @@ R
 tested with data/bootcamp_observations_invalid.csv, giving an error mesage of "Count values must be non-negative integers".
 create a figure in results/known_totals.png when using data/bootcamp_observations.csv.
 
+----------------section: data management and data visualisation------------
 - data_wrang
 
 - data_wrang_tidy.R
