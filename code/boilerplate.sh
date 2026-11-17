@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Author: Xinyi xl6226@ic.ac.uk
+# Author: Xinyi <xl6226@ic.ac.uk>
 # Script: boilerplate.sh
 # Desc: Simple boilerplate for shell scripts
 # Arguments: None
