@@ -296,20 +296,32 @@ python scripts (12)
     use breakpoint()
     try - except, can catch specific error types
 
+
 R scripts (11)
 ----------------section: biological computing in R------------
-- basic_io.R 
-- boilerplate.R
+- basic_io.R: import file and create a new file with added or omitted columns or rows
+    data: data/trees.csv
+    run from the coursework project root with Rscript code/basic_io.R
+
+- boilerplate.R: making a function that shows the types of the inputed two arguments separately
+    in the R console: source("code/boilerplate.R")
+
 - control_flow.R
+    run each block seperately by sending or pasting into the R console
+    if: run some block of code only when condition is true
+    for: repeat task over some range of input values
+    while: perform operation till some condition met
+    test the whole by running in R console source("code/control_flow.R") or Rscript code/control_flow.R on linux
 
 - r_conditionals.R: functions with conditionals, checking for even number, whether a number is a power of 2 and prime numbers.
-    run in R conole with source("code/r_conditionals.R")
+    run in R console with source("code/r_conditionals.R"), check with print(is.even(6)), print(is.power2(4)) and print(is.prime(3)).
+    or Rscript code/r_conditionals.R on linux which gives the output directly
 
 - break.R: control flow with break, breaking at a certain iteration
-    run in R conole with source("code/break.R")
+    run in R console with source("code/break.R")
 
 - next.R: control flow with next, checking and printing the odds numbers throughout iteration
-    run in R conole with source("code/next.R")
+    run in R console with source("code/next.R")
 
 - try.R: catch error using try() in generated random number, carry on the iteration even when error occurs
     run in R console with source("code/try.R")
@@ -322,11 +334,13 @@ R scripts (11)
         Q: exit browser and abort, return to top-level.
         use N or t to see the list of values
         ls() to insepct all variables in the function
+    At first breakpoint, t was 2, N[t] was  2.718282. after entering c, it is confirmed that the loop paused again at t = 3.
   
   limtiation: need to know where about the bug is
 
 - observations_practice.R
-tested with data/bootcamp_observations_invalid.csv, giving an error mesage of "Count values must be non-negative integers".
+using both "biological computing in R" and "data management and data visualisation" sections
+data: data/bootcamp_observations_invalid.csv, giving an error mesage of "Count values must be non-negative integers".
 create a figure in results/known_totals.png when using data/bootcamp_observations.csv.
 
 ----------------section: data management and data visualisation------------
