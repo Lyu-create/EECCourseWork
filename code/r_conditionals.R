@@ -21,6 +21,7 @@ is.power2 <- function(n) {
   return(paste(n, 'is not a power of 2!'))
     }
 }
+
 is.power2(4)
 
 
@@ -28,13 +29,13 @@ is.power2(4)
 is.prime <- function(n) {
   if (n == 0) {
     return(paste(n,'is a zero!'))
-  } else if (n == 1){
-    return(paste(n, 'is not a unit!'))
+  } else if (n == 1) {
+    return(paste(n, 'is just a unit!'))
   }
 
   ints <- 2:(n - 1)
 
-  if (all(n %% ints != 0)) {
+  if (all(n%%ints!=0)) {
     return(paste(n, 'is a prime!'))
   } else {
   return(paste(n, 'is a composite!'))
