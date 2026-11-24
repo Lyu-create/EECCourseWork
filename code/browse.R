@@ -7,8 +7,7 @@ Exponential <- function(N0 = 1, r = 1, generations = 10) {
   N[1] <- N0
   for (t in 2:generations) {
     N[t] <- N[t - 1] * exp(r)
-    cat("Current iteration:", t, "\n")
-    browser()
+    browser() # show variables in each iteration
   }
   return (N)
 }
