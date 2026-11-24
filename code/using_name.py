@@ -1,5 +1,6 @@
 #!/usr/bin/ env python3
-"""Demonstrate the value python assigns to __name __"""
+
+"""Demonstrate the value python assigns to __name __."""
 
 def module_name():
     """Return the name Python assigned to this module"""
@@ -7,7 +8,7 @@ def module_name():
 
 def main():
     """Report module name during direct execution"""
-    print(f"This module's name is {module_name()}")
+    print(f"This module's name is: {module_name()}")
 
 if __name__ == "__main__":
     main()

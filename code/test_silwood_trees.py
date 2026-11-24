@@ -556,7 +556,7 @@ assert process_records([
 
 
 ## sumarise oaks
-# normal case counting both aok species
+# normal case counting both oak species
 assert summarise_oaks([
     {
         "record_id": "ST001",
@@ -610,5 +610,25 @@ assert summarise_oaks([
         "species": "pseudoplatanus",
         "distance_m": 12.0,
         "angle_degrees": 36.0,
+    },
+]) == []
+
+# near match oak species
+assert summarise_oaks([
+    {
+        "record_id": "ST001",
+        "location": "Silwood Bottom",
+        "genus": "Quercus",
+        "species": "roburr",  # Misspelling of robur
+        "distance_m": 12.0,
+        "angle_degrees": 36.0,
+    },
+    {
+        "record_id": "ST002",
+        "location": "Silwood Bottom",
+        "genus": "Quercus",
+        "species": "alba",  # Unpermitted species
+        "distance_m": 15.0,
+        "angle_degrees": 40.0,
     },
 ]) == []

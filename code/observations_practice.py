@@ -16,7 +16,7 @@ def parse_count(count_text):
     except ValueError:
         raise ValueError        
 
-if __name__ == "__main__":
-    rows = load_observations("data/bootcamp_observations.csv")
+if __name__ == "__main__":# importing functions will not execute the code below this line, but running this file directly will.
+    rows = load_observations("data/bootcamp_observations.csv") 
     print(rows[0])
     print(rows[2])

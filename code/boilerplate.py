@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""A minimal structure for an import safe python programme"""
+
+"""A minimal structure for an import-safe Python programme."""
 
 def main():
     """Run the programmes main task"""
