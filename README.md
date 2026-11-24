@@ -1,4 +1,4 @@
-My Git practice repository
+My Git Practice Repository
 
 This repository is to hand in homework for bootscamp module in Imperial College London MRes Ecology, Evolution and Conservation. The course books is MulQuaBio
 
@@ -259,6 +259,42 @@ bash scripts (7)
     remember to return back to project root by cd $project_root
     limitations: no matches, uppercase extensions, option-like filenames, output collisions, converter failure, adding optional directory argument. existing png may be overwritten.
 
+python scripts (12)
+- loops.py
+- cfexercises1.py
+- cfexercises2.py
+- MyExampleScript.py:
+    run with python3 code/MyExampleScript.py
+- boilerplate.py:
+    run with python3 code/boilerplboilerplate.pyate.py
+- using_name.py:
+- sysargv.py
+- control_flow.py
+    run in bash terminal with python3 code/control_flow.py
+    %run code/control_flow.py in ipython terminal
+- test_control_flow.py
+    run with python3 code/test_control_flow.py, no output means passed assertions checks.
+- observations_practice.py
+    run with python3 code/observations_practice.py
+    data: data/bootcamp_observations.csv
+       site: Non-empty text identifying a site.
+       date: Non-empty text identifying the sampling date. Supplied dates use YYYY-MM-DD; calendar validation is outside this exercise.
+       count: Empty text "" means missing; otherwise text that int can convert to a non-negative integer. Zero is a known observation. 
+- test_observations_practice.py
+    run with python3 code/test_observations_practice.py
+- debugme.py
+    debug with %pdb, run code/debugme.py
+        n: continue execution until the next line
+        ENTER: repeat the previous command
+        s: “step” into next function or procedure (i.e., continue the debugging inside the function, as opposed to simply execute it till it returns)
+        p x: print variable x
+        pp locals(): pretty print all variables and objects in current workspace scope
+        c: continue until next break-point
+        l: print the code surrounding the current position (you can specify how many)
+        R: continue until the end of the function
+        q: quit
+    use breakpoint()
+    try - except, can catch specific error types
 
 R scripts (11)
 ----------------section: biological computing in R------------
