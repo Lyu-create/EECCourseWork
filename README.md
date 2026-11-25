@@ -73,15 +73,25 @@ README.md
 # Assigmment 3 (R)
 1.1 Treeheight calculation
 This calculates heights of trees given distance of each tree from its base and angle to its top, using  the trigonometric formula 
-- Run command from project root:  Rscript code/TreeHeight.R in linux and source("code/TreeHeight.R") in terminal
+- Run command from project root:  Rscript code/TreeHeight.R in linux and source("code/TreeHeight.R") in R terminal
 - input path: data/trees.csv
 - output path: results/TreeHts.csv
-- checked record: "Carpinus betulus",39.501561964862,30.2981362491846"
+
+checking:  using the above commands, the output header is 
+|Species | Distance.m | Angle.degrees | height_m |
+| --- | --- | --- | --- |
+
+and there are 120 rows in the output.
+
+the record checked is:
+"Carpinus betulus",39.501561964862,30.2981362491846"
 ```r
 39.501561964862 * tan (30.2981362491846 * pi / 180)
 [1] 23.08113
 ```
 Consistent with the value in TreeHts.csv "23.0811254247168"
+
+Rerunning the scitp replaces the result rather than appending to the original rows.
 
 1.2 generalise tree-height script
 - Run command from project root:  bash code/run_get_TreeHeight.sh
