@@ -1,12 +1,52 @@
 # My Git Practice Repository
+
 ## Description
-This repository is to hand in homework for bootscamp module in Imperial College London MRes Ecology, Evolution and Conservation. The course books is MulQuaBio.
+This repository contains the cumulative Computing Bootcamp
+coursework portfolio for the MRes Ecology, Evolution and
+Conservation programme at Imperial College London (2026–2027).
+
+This portfolio has been developed and revised in accordance
+with the Computing Bootcamp Assessment Rubric
+(see "Resources" section) and the formative feedback
+received for Assignments 1–3.
+
+The coursework is based on the MulQuaBio coursebook and
+covers Unix, Shell scripting, Python and R.
 
 ## Structure
-This folder contain code, data, result and sandbox where the last two is kept but untracked. There is also a folder for feedback from professors.
+This folder contain code, data, result and sandbox where the last two is kept but untracked. There is also a folder for feedback.
 
-## Developing
-cloning the repository
+## Dependencies
+### Software
+- Linux (Ubuntu)
+- Git
+- Bash
+- Python 3
+- R
+### Shell dependencies
+- bc
+- ImageMagick (for tiff2_png.sh)
+### Python dependencies
+- IPython (optional, for interactive exercises)
+### R packages
+- tidyr
+- ggplot2
+
+## Getting Started
+Clone the repository using HTTPS:
+```bash
+git clone https://github.com/Lyu-create/EECCourseWork.git
+```
+Alternatively, use GitHub CLI (if installed):
+```bash
+gh repo clone Lyu-create/EECCourseWork
+```
+Navigate to the project root:
+```bash
+cd EECCourseWork
+```
+All execution commands in this README should be run from
+the project root unless otherwise specified.
 
 ## Table of contents
 
@@ -68,7 +108,6 @@ sandbox
 
 README.md
 
-## Clone or download the EECCourseWork repository and run all commands from the project root unless otherwise specified.
 --------------------------------------------------------------
 # Assigmment 3 (R)
 1.1 Treeheight calculation
@@ -91,7 +130,27 @@ the record checked is:
 ```
 Consistent with the value in TreeHts.csv "23.0811254247168"
 
-Rerunning the scitp replaces the result rather than appending to the original rows.
+Rerunning the script replaces the result rather than appending to the original rows.
+
+| Test | command | expected output | result |
+| --- | --- | --- | --- |
+| Reordered columns |
+| Additional columns |
+| Missing columns |
+| Distance.m is character |
+| Distance.m is infinite |
+| Distance.m < 0 |
+| Distance.m = 0 |
+| Distance.m = 100 |
+| Distance.m > 100 |
+| Angle.degrees is character |
+| Angle.degrees is infinite |
+| Angle.degrees < 0 |
+| Angle.degrees = 0 |
+| Angle.degrees = 90 |
+| Angle.degrees > 90 |
+
+
 
 1.2 generalise tree-height script
 - Run command from project root:  bash code/run_get_TreeHeight.sh
@@ -443,14 +502,15 @@ This should give 6 rows and 6 columns
 # AI statement
 I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, generating test data, checking the grammar errors in my script.
 
-# Author contributions
-Author: Xinyi Lyu
+## Author
+- **Name:** Xinyi Lyu
+- **Email:** x.lyu26@ic.ac.uk
 
-Email: xl6226@ic.ac.uk
+## Resources
+- [MulQuaBio online coursebook](https://mulquabio.github.io/MQB/)
+- [MulQuaBio GitHub repository](https://github.com/MulQuaBio/MQB)
+- [Computing Bootcamp assessment rubric](https://mulquabio.github.io/MQB/rubrics/Computing_Bootcamp_Rubric.html)
 
-# Links
-- Project homepage
-- Repository
-- Related projects
-    - coursebook:
+## Acknowledgement
+I would like to thank Professor Pawar for writing such a wonderful book that is always updated to teach us to be multiligual in computer programming languages. I would also like to say thank you for his effort to provide formative feedback, which guided the revision and the improvement of this coursework.
 
