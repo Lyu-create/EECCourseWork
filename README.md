@@ -98,7 +98,7 @@ This data is to analyse mean plant species richness and abundance per plot varyi
 ## Response to formative feedback
 | Practical/File | Feedback category | Feedback received | Changes made |
 | --- | --- | --- | --- |
-| results/ | repository organisation and workflow disipline | make output creation reproducible form a newly cloned copu of your repository | (creat results/ each time a script is ran)
+| results/ | repository organisation and workflow disipline | make output creation reproducible form a newly cloned copu of your repository | create results/ each time a script is ran
 | general | code quality and style | keep names descriptive, use comments and avoid repeating calculations
 | README | Documention | shold be able to repeat checks | (give exact commands in README.md)
 | commit | version-control practice | needs to be easier to follow | (commit each functional revision with short message rather than one large final commit)
@@ -107,8 +107,7 @@ This data is to analyse mean plant species richness and abundance per plot varyi
 | plot generation| problem_solving approach and method implementation | print each plot during execution and close its pdf device before opening the next |
 | plot generation| problem_solving approach and method implementation | inspection needed after rerun | (inspect labels, plotted values and biological meanings)
 | README | Documnetation | refresh file listing |
-
-priority: Rerun one ordinary and one invalid case for each tree-height route. Check stderr, exit behaviour and whether any new result is written; a failed run should not leave a misleading new output.
+| Tree height routes | testing |Rerun one ordinary and one invalid case for each tree-height route. Check stderr, exit behaviour and whether any new result is written; a failed run should not leave a misleading new output | 
 
 
 --------------------------------------------------------------

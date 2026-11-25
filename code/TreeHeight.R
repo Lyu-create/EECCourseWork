@@ -5,7 +5,7 @@
 #
 # ARGUMENTS
 # degrees:  The angle of elevation of tree
-# distance: The distance from base of tree (e.g. meters)
+# distance: The distance from base of tree (e.g., meters)
 #
 # OUTPUT
 # The heights of the tree, same units as "distance"
