@@ -1,12 +1,20 @@
-My Git Practice Repository
+# My Git Practice Repository
+## Description
+This repository is to hand in homework for bootscamp module in Imperial College London MRes Ecology, Evolution and Conservation. The course books is MulQuaBio.
 
-This repository is to hand in homework for bootscamp module in Imperial College London MRes Ecology, Evolution and Conservation. The course books is MulQuaBio
+## Structure
+This folder contain code, data, result and sandbox where the last two is kept but untracked. There is also a folder for feedback from professors.
 
-Current EECCourseWork project structure:
+## Developing
+cloning the repository
+
+## Table of contents
+
 Feedback
 
     assignment-1-2026.md
     assignment-2-2026.md
+    assignment-3-2026.md
 
 code
 
@@ -53,13 +61,16 @@ data
     trees.csv
 
 results
+
 sandbox
+
 .gitignore
+
 README.md
 
 ## Clone or download the EECCourseWork repository and run all commands from the project root unless otherwise specified.
 --------------------------------------------------------------
-Assigmment 3 (R)
+# Assigmment 3 (R)
 1.1 Treeheight calculation
 This calculates heights of trees given distance of each tree from its base and angle to its top, using  the trigonometric formula 
 - Run command from project root:  Rscript code/TreeHeight.R in linux and source("code/TreeHeight.R") in terminal
@@ -84,8 +95,21 @@ This data is to analyse mean plant species richness and abundance per plot varyi
 - input path: data/pound_hill_data.csv and data/pound_hill_meta_data.csv
 - output path: results/pound_hill_plot_richness.csv, results/pound_hill_plot_richness.pdf, results/pound_hill_plot_abundance.pdf
 
+## Response to formative feedback
+| Practical/File | Feedback category | Feedback received | Changes made |
+| --- | --- | --- | --- |
+| results/ | repository organisation and workflow disipline | make output creation reproducible form a newly cloned copu of your repository | (creat results/ each time a script is ran)
+| general | code quality and style | keep names descriptive, use comments and avoid repeating calculations
+| README | Documention | shold be able to repeat checks | (give exact commands in README.md)
+| commit | version-control practice | needs to be easier to follow | (commit each functional revision with short message rather than one large final commit)
+| pound hill | problem_solving approach and method implementation | keep interactice viewing outside the required batch run or replace with console freindly inspection |
+| README | Documnetation | refresh file listing |
+
+priority: Rerun one ordinary and one invalid case for each tree-height route. Check stderr, exit behaviour and whether any new result is written; a failed run should not leave a misleading new output.
+
+
 --------------------------------------------------------------
-Assigment 2 (python)
+# Assigment 2 (python)
 python project: cleaning up silwood tree data
 data location:/data/silwood_trees_raw.csv and silwood_trees_metadata.md
 
@@ -178,9 +202,22 @@ For each row in clean_records
 For each oak species, if its count is greater than zero, add a row containing the species name and its count to the oak_counts list.
 Return the oak_counts list containing the species and their counts.
 
+## Response to formative feedback
+| Practical/File | Feedback category | Feedback received | Changes made |
+| --- | --- | --- | --- |
+| clean silwood tree data | code completeness and functional correctness | difference in the species field of row 2 in oak_species_counts.csv in both test runs |
+| clean silwood tree data | code quality and style | use more descriptive names and add short comments (reason for a validation check or data-cleaning step when not obvious)|
+| README.md | documentation | make it more useful (add purpose of data cleaner, how to run the script and test for root, the files created)
+| README.md | Documentation | test instruction in a newly cloned copy of repository with git clone, enter the folder and run each readme command exactly as written. if something fials, correct the command or add the missing step
+| general | version control practice | check for one coherent wotking change (and then write concise meessage for the name of the change and why it is needed when not obvious)
+| clean silwood tree data | basic error handling and input validation | turn the diagnosis into a regreesion test (add small, hand-checkable cases that reproduced the behavioru you identify, asserting the relavant species lables, counts and any ordering required by the breif, to make correction repeatbale rather than visual inspection/ rerun both tests and full work flow, recheck all three tables)
+| clean silwood tree data | problem-solving appraoch and method implementation | trace one boarderline record |
+
+
+
 --------------------------------------------------------------
-Assignment 1 (bash)
-1 DNA sequence practical
+# Assignment 1 (bash)
+1 DNA sequence practical (Unix)
 input files: data/fasta/407228326.fasta, data/fasta/407228412.fasta and data/fasta/e_coli.fasta
 Run command from project root by copying question by question/line by line to the terminal
 
@@ -197,9 +234,25 @@ input path: data/temperatures/1800.csv, data/temperatures/1801.csv, data/tempera
 run command from project root: bash code/csvtospace.sh data/temperatures/1800-1803.csv
 output path: results/1800-1803.csv.txt
 
+## Response to formative feedback
+| Practical/File | Feedback category | Feedback received | Changes made |
+| --- | --- | --- | --- |
+| General | Reproducibility | dependen too much on local setup | use relative paths starting from project root 
+| gitignore | rule of ignoring | ignoring all csv files may hide required data later | 1. ignored the results directory by .gitignore results/ 2.kept the result directory in display by .gitkeep results/
+| README.md | main entry point | clarify whether READ.md has a separate purpose | deleted READ.md because it was a misspelling of README.md
+| DNA sequence practical (all questions) | import files | use bare FASTA files | use relative path from data/
+| DNA sequence practical general (Q1 and Q5) | independence | command spread across lines | use pipes and +
+| DNA sequence practical Q3 | wrong | included line endings | trim new line characteris befor counting with re -d '\n'
+ DNA sequence practical Q5 |  wrong | included head characters | exclude head lines with tail -n +2
+| converter | test data | .tsv exmaple contains commas | generate a small new tab-delimeted table with an empty field 
+| converter | error check | report done even when conversion failed | send errors to the standard error and print error
+| converter | extract file | folds the whole input path into its output path | extract base names with basename "$1"
+
+
+
 
 ---------------------------------------------------------------
-## other codes
+# other codes
 bash scripts (7)
 ----------------Shell scripting------------
 - variables.sh; bash code/variables.sh or with arguments
@@ -375,8 +428,17 @@ print(MyWrangledData_test)
 This should give 6 rows and 6 columns
 
 
-AI statement
+# AI statement
 I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, generating test data, checking the grammar errors in my script.
 
+# Author contributions
 Author: Xinyi Lyu
-email: xl6226@ic.ac.uk
+
+Email: xl6226@ic.ac.uk
+
+# Links
+- Project homepage
+- Repository
+- Related projects
+    - coursebook:
+
