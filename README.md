@@ -103,6 +103,9 @@ This data is to analyse mean plant species richness and abundance per plot varyi
 | README | Documention | shold be able to repeat checks | (give exact commands in README.md)
 | commit | version-control practice | needs to be easier to follow | (commit each functional revision with short message rather than one large final commit)
 | pound hill | problem_solving approach and method implementation | keep interactice viewing outside the required batch run or replace with console freindly inspection |
+| pound hill | problem_solving approach and method implementation | filtered out zero counts | (compare quadrat identifier before and after filter, check the adbudance and richness manually)|
+| plot generation| problem_solving approach and method implementation | print each plot during execution and close its pdf device before opening the next |
+| plot generation| problem_solving approach and method implementation | inspection needed after rerun | (inspect labels, plotted values and biological meanings)
 | README | Documnetation | refresh file listing |
 
 priority: Rerun one ordinary and one invalid case for each tree-height route. Check stderr, exit behaviour and whether any new result is written; a failed run should not leave a misleading new output.
