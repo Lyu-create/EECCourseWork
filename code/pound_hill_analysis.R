@@ -43,7 +43,7 @@ MyWrangledData[, "Count"] <- as.integer(MyWrangledData[, "Count"])
 # speices already converted into factor in melt function
 
 # check results
-View(MyWrangledData)
+print(head(MyWrangledData))
 all(is.finite(MyWrangledData$Count)) # numeric and non-negative
 length(unique(MyWrangledData$Species)) # number of distinct species
 length(unique(paste(MyWrangledData$Cultivation, MyWrangledData$Block, MyWrangledData$Quadrat,MyWrangledData$Plot ))) # distinct quadrats
