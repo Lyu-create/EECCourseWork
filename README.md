@@ -300,14 +300,14 @@ input path: data/tab-example.tsv
 Run command from project root: bash code/tabtocsv.sh data/tab-example.tsv
 output path: results/tab-example.tsv.csv
 
-2.2 csvtospace
+2.2 csvtospace.sh
 input path: data/temperatures/1800.csv, data/temperatures/1801.csv, data/temperatures/1802.csv and data/temperatures/1803.csv
 run command from project root separately: 
     bash code/csvtospace.sh data/temperatures/1800.csv
     bash code/csvtospace.sh data/temperatures/1801.csv
     bash code/csvtospace.sh data/temperatures/1802.csv
     bash code/csvtospace.sh data/temperatures/1803.csv
-output path: results/1800.csv.txt, results/1802.csv.txt, results/1803.csv.txt
+output path: results/1800.csv.txt, results/1801.csv.txt, results/1802.csv.txt, results/1803.csv.txt
 
 ## Response to formative feedback
 | Practical/File | Feedback category | Feedback received | Changes made |
@@ -346,7 +346,7 @@ bash scripts (7)
 
 - CheckLabel.sh
     echo "$?" prints the exit status
-    run with code/CheckLabel.sh
+    run with bash code/CheckLabel.sh
     argument is oak/pine -> oak/pine, 0
     not equal to one argument -> Usage: code/CheckLabel.sh oak|pine, 2
     one argument that is not oak -> Unknown label: <>, 1
