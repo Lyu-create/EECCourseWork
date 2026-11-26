@@ -13,7 +13,7 @@ received for Assignments 1–3.
 The coursework is based on the MulQuaBio coursebook and
 covers Unix, Shell scripting, Python and R.
 
-## Structure
+## Portfolio Structure
 This folder contain code, data, result and sandbox where the last two is kept but untracked. There is also a folder for feedback.
 
 ## Dependencies
@@ -49,66 +49,51 @@ All execution commands in this README should be run from
 the project root unless otherwise specified.
 
 ## Table of contents
-
-Feedback
-
-    assignment-1-2026.md
-    assignment-2-2026.md
-    assignment-3-2026.md
-
-code
-
-    TreeHeight.R
-    Vectorize1.R
-    apply1.R
-    apply2.R
-    basic_io.R
-    boilerplate.R
-    break.R
-    browse.R
-    clean_silwood_trees.py
-    control_flow.R
-    csvtospace.sh
-    get_TreeHeight.R
-    next.R
-    oaks.py
-    pound_hill_analysis.R
-    preallocate.R
-    r_conditionals.R
-    run_get_TreeHeight.sh
-    sample.R
-    tabtocsv.sh
-    test_silwood_trees.py
-    try.R
-    unixPrac1.txt
-
-data
-
-    fasta
-        407228326.fasta
-        407228412.fasta
-        e_coli.fasta
-    temperatures
-        1800.csv
-        1801.csv
-        1802.csv
-        1803.csv
-    pound_hill_data.csv
-    pound_hill_meta_data.csv
-    silwood_trees_metadata.md
-    silwood_trees_raw.csv
-    tab-example.tsv
-    trees.csv
-
-results
-
-sandbox
-
-.gitignore
-
-README.md
+Assignment 1
+Assigement 2
+Assignement 3 
+other codes
 
 --------------------------------------------------------------
+## Approach to Formative Feedback
+Some repeated or overlapping feedback across assignments is addressed only once to avoid duplication.
+---------------------------------------------------------------
+# Assignment 1 (bash)
+1 DNA sequence practical (Unix)
+input files: data/fasta/407228326.fasta, data/fasta/407228412.fasta and data/fasta/e_coli.fasta
+Run command from project root by copying question by question/line by line to the terminal
+
+2 converters
+    limitations: converting one file at a time, change the symbol regardless of the input format
+
+2.1 tabtocsv improved
+input path: data/tab-example.tsv
+Run command from project root: bash code/tabtocsv.sh data/tab-example.tsv
+output path: results/tab-example.tsv.csv
+
+2.2 csvtospace.sh
+input path: data/temperatures/1800.csv, data/temperatures/1801.csv, data/temperatures/1802.csv and data/temperatures/1803.csv
+run command from project root separately: 
+    bash code/csvtospace.sh data/temperatures/1800.csv
+    bash code/csvtospace.sh data/temperatures/1801.csv
+    bash code/csvtospace.sh data/temperatures/1802.csv
+    bash code/csvtospace.sh data/temperatures/1803.csv
+output path: results/1800.csv.txt, results/1801.csv.txt, results/1802.csv.txt, results/1803.csv.txt
+
+## Response to formative feedback
+| Practical/File | Feedback category | Feedback received | Changes made |
+| --- | --- | --- | --- |
+| General | Reproducibility | dependen too much on local setup | use relative paths starting from project root 
+| gitignore | rule of ignoring | ignoring all csv files may hide required data later | 1. ignored the results directory by .gitignore results/ 2.kept the result directory in display by .gitkeep results/
+| README.md | main entry point | clarify whether READ.md has a separate purpose | deleted READ.md because it was a misspelling of README.md
+| DNA sequence practical (all questions) | import files | use bare FASTA files | use relative path from data/
+| DNA sequence practical general (Q1 and Q5) | independence | command spread across lines | use pipes and +
+| DNA sequence practical Q3 | wrong | included line endings | trim new line characteris befor counting with re -d '\n'
+ DNA sequence practical Q5 |  wrong | included head characters | exclude head lines with tail -n +2
+| converter | test data | .tsv exmaple contains commas | generate a small new tab-delimeted table with an empty field 
+| converter | error check | report done even when conversion failed | send errors to the standard error and print error
+| converter | extract file | folds the whole input path into its output path | extract base names with basename "$1"
+
 # Assigmment 3 (R)
 1.1 Treeheight calculation
 This calculates heights of trees given distance of each tree from its base and angle to its top, using  the trigonometric formula 
@@ -287,41 +272,7 @@ Return the oak_counts list containing the species and their counts.
 
 
 --------------------------------------------------------------
-# Assignment 1 (bash)
-1 DNA sequence practical (Unix)
-input files: data/fasta/407228326.fasta, data/fasta/407228412.fasta and data/fasta/e_coli.fasta
-Run command from project root by copying question by question/line by line to the terminal
 
-2 converters
-    limitations: converting one file at a time, change the symbol regardless of the input format
-
-2.1 tabtocsv improved
-input path: data/tab-example.tsv
-Run command from project root: bash code/tabtocsv.sh data/tab-example.tsv
-output path: results/tab-example.tsv.csv
-
-2.2 csvtospace.sh
-input path: data/temperatures/1800.csv, data/temperatures/1801.csv, data/temperatures/1802.csv and data/temperatures/1803.csv
-run command from project root separately: 
-    bash code/csvtospace.sh data/temperatures/1800.csv
-    bash code/csvtospace.sh data/temperatures/1801.csv
-    bash code/csvtospace.sh data/temperatures/1802.csv
-    bash code/csvtospace.sh data/temperatures/1803.csv
-output path: results/1800.csv.txt, results/1801.csv.txt, results/1802.csv.txt, results/1803.csv.txt
-
-## Response to formative feedback
-| Practical/File | Feedback category | Feedback received | Changes made |
-| --- | --- | --- | --- |
-| General | Reproducibility | dependen too much on local setup | use relative paths starting from project root 
-| gitignore | rule of ignoring | ignoring all csv files may hide required data later | 1. ignored the results directory by .gitignore results/ 2.kept the result directory in display by .gitkeep results/
-| README.md | main entry point | clarify whether READ.md has a separate purpose | deleted READ.md because it was a misspelling of README.md
-| DNA sequence practical (all questions) | import files | use bare FASTA files | use relative path from data/
-| DNA sequence practical general (Q1 and Q5) | independence | command spread across lines | use pipes and +
-| DNA sequence practical Q3 | wrong | included line endings | trim new line characteris befor counting with re -d '\n'
- DNA sequence practical Q5 |  wrong | included head characters | exclude head lines with tail -n +2
-| converter | test data | .tsv exmaple contains commas | generate a small new tab-delimeted table with an empty field 
-| converter | error check | report done even when conversion failed | send errors to the standard error and print error
-| converter | extract file | folds the whole input path into its output path | extract base names with basename "$1"
 
 
 
