@@ -256,9 +256,8 @@ This data is to analyse mean plant species richness and abundance per plot varyi
 
 
 ---------------------------------------------------------------
-# other codes
+## Other Codes
 bash scripts (7)
-----------------Shell scripting------------
 ### Bash practice scripts (7)
 
 | Script | Run command and testing instructions | Input | Output | Description and checks |
@@ -271,43 +270,24 @@ bash scripts (7)
 | `ConcatenateTwoFiles.sh` | `shell_practice=$(mktemp -d)` <br> `printf 'oak\n' > "$shell_practice/first.txt"` <br> `printf 'pine\n' > "$shell_practice/second.txt"` <br><br> `bash code/ConcatenateTwoFiles.sh "$shell_practice/first.txt" "$shell_practice/second.txt" "$shell_practice/combined.txt"` <br><br> Repeat the final command and inspect the output using `cat "$shell_practice/combined.txt"`. | Two text files and an output path | `combined.txt` in the temporary directory | Combines two files. Rerunning checks whether the output remains reproducible without duplicated contents. The output path must be distinct from both input paths. |
 | `tiff2_png.sh` | **Check dependencies:** <br> `command -v magick` <br> `command -v convert` <br><br> **Prepare a temporary directory from the project root:** <br> `project_root="$PWD"` <br> `script_path="$project_root/code/tiff2_png.sh"` <br> `shell_practice=$(mktemp -d)` <br> `mkdir "$shell_practice/images"` <br> `cd "$shell_practice/images"` <br><br> Copy expendable lowercase `.tif` images into this directory. <br><br> **Run conversion:** <br> `bash "$script_path"` <br> `cd "$project_root"` <br><br> **Syntax-only check:** <br> `bash -n code/tiff2_png.sh` | Lowercase `.tif` images in the temporary directory | `.png` images in the same directory | Conversion tested using ImageMagick, which is required for actual image conversion. A syntax check alone cannot verify successful conversion. <br><br> **Limitations:** unmatched file patterns, uppercase extensions, option-like filenames, output collisions and converter failures. Existing PNG files may be overwritten. The script operates in the current directory. |
 
-python scripts (12)
-- loops.py
-- cfexercises1.py
-- cfexercises2.py
-- MyExampleScript.py:
-    run with python3 code/MyExampleScript.py
-- boilerplate.py:
-    run with python3 code/boilerplate.py
-- using_name.py:
-- sysargv.py
-- control_flow.py
-    run in bash terminal with python3 code/control_flow.py
-    %run code/control_flow.py in ipython terminal
-- test_control_flow.py
-    run with python3 code/test_control_flow.py, no output means passed assertions checks.
-- observations_practice.py
-    run with python3 code/observations_practice.py or %run code/test_observations_practice.py
-    data: data/bootcamp_observations.csv
-       site: Non-empty text identifying a site.
-       date: Non-empty text identifying the sampling date. Supplied dates use YYYY-MM-DD; calendar validation is outside this exercise.
-       count: Empty text "" means missing; otherwise text that int can convert to a non-negative integer. Zero is a known observation. 
-- test_observations_practice.py
-    run with python3 code/test_observations_practice.py,
-    no output means passed assertions checks.
-- debugme.py
-    debug with %pdb, run code/debugme.py
-        n: continue execution until the next line
-        ENTER: repeat the previous command
-        s: “step” into next function or procedure (i.e., continue the debugging inside the function, as opposed to simply execute it till it returns)
-        p x: print variable x
-        pp locals(): pretty print all variables and objects in current workspace scope
-        c: continue until next break-point
-        l: print the code surrounding the current position (you can specify how many)
-        R: continue until the end of the function
-        q: quit
-    use breakpoint()
-    try - except, can catch specific error types
+### Python practice scripts (12)
+
+All commands are run from the project root. For IPython commands, start an interactive session using `ipython`.
+
+| Script | Bash command | IPython command | Input | Output | Description and checks |
+|---|---|---|---|---|---|
+| `loops.py` | `python3 code/loops.py` | `%run code/loops.py` | Values defined in the script | Terminal output | Demonstrates iteration using `for` and `while` loops. |
+| `cfexercises1.py` | `python3 code/cfexercises1.py` | `%run code/cfexercises1.py` | Numerical values | Terminal output | Demonstrates conditional statements, functions, loops and recursive and iterative factorial calculations. |
+| `cfexercises2.py` | `python3 code/cfexercises2.py` | `%run code/cfexercises2.py` | Values defined in the script | Terminal output | Demonstrates control flow using loops and conditional statements. |
+| `MyExampleScript.py` | `python3 code/MyExampleScript.py` | `%run code/MyExampleScript.py` | Values defined in the script | Terminal output | Demonstrates basic Python script structure and execution. |
+| `boilerplate.py` | `python3 code/boilerplate.py` | `%run code/boilerplate.py` | None | Terminal output | Demonstrates the shebang, docstrings, functions and startup guard. |
+| `using_name.py` | `python3 code/using_name.py` | `%run code/using_name.py` | None | Terminal output | Demonstrates the use of `__name__` when a script is executed directly or imported. |
+| `sysargv.py` | `python3 code/sysargv.py` <br><br> `python3 code/sysargv.py oak "two words"` | `%run code/sysargv.py` <br><br> `%run code/sysargv.py oak "two words"` | Optional command-line arguments | Script name, argument count and argument list | Demonstrates command-line arguments using `sys.argv`. The first element contains the script name. |
+| `control_flow.py` | `python3 code/control_flow.py` <br><br> `python3 -m doctest -v code/control_flow.py` | `%run code/control_flow.py` <br><br> `%run -m doctest -v code/control_flow.py` | Numerical values | Terminal output and doctest results | Demonstrates reusable functions and control flow. Doctest compares actual results against expected results in the docstring. |
+| `test_control_flow.py` | `python3 code/test_control_flow.py` | `%run code/test_control_flow.py` | Test values and functions imported from `control_flow.py` | Assertion errors if checks fail | Successful assertions produce no output. |
+| `observations_practice.py` | `python3 code/observations_practice.py` | `%run code/observations_practice.py` | `data/bootcamp_observations.csv` | Terminal output | Demonstrates CSV loading, count validation and missing-value handling. Site and date must be non-empty text. Empty counts represent missing observations, while zero represents a known observation. |
+| `test_observations_practice.py` | `python3 code/test_observations_practice.py` | `%run code/test_observations_practice.py` | Test values and functions imported from `observations_practice.py` | Assertion errors if checks fail | Tests normal, boundary and invalid inputs. `"-1"`, `"many"` and integer `2` must raise `ValueError`. Successful assertions produce no output. |
+| `debugme.py` | `python3 code/debugme.py` <br><br> Interactive debugging: `python3 -m pdb code/debugme.py` | `%pdb on` <br> `%run code/debugme.py` | Numerical argument supplied to `buggyfunc()` | Debugger output and error messages | Demonstrates debugging using `pdb`, `%pdb` and `breakpoint()`. Debugger commands include `n` (next line), `Enter` (repeat previous command), `s` (step into a function), `p x` (print variable), `pp locals()` (display local variables), `c` (continue), `l` (list surrounding code), `r` (continue until the function returns) and `q` (quit). Demonstrates specific exception handling using `try` and `except`. |
 
 
 R scripts (11)
