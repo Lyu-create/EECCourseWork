@@ -196,11 +196,11 @@ All commands are run from the project root.
 
 | Practical / File | Feedback category | Feedback received | Changes made and verification |
 |---|---|---|---|
-| `results/` | Repository organisation and workflow discipline | Make output creation reproducible from a newly cloned repository. | Scripts create `results/` when needed. |
+| General | Repository organisation and workflow discipline | Make output creation reproducible from a newly cloned repository. | Scripts create `results/` when needed. |
 | General | Code quality and style | Keep variable names descriptive, use comments and avoid repeating calculations. | |
 | `README.md` | Documentation | Provide sufficient information for readers to repeat the checks. | Provide exact execution and testing commands in `README.md`. |
 | Git commits | Version-control practice | Make the development history easier to follow. | Commit individual functional revisions with concise commit messages. |
-| `pound_hill_analysis.R` | Problem-solving approach and method implementation | Keep interactive viewing outside the required batch execution or replace it with console-friendly inspection. | |
+| `pound_hill_analysis.R` | Problem-solving approach and method implementation | Keep interactive viewing outside the required batch execution | replace it with console-friendly inspection|
 | `pound_hill_analysis.R` | Problem-solving approach and method implementation | Zero counts were filtered out. | Compare quadrat identifiers before and after filtering, and manually check abundance and richness calculations. |
 | Plot generation | Problem-solving approach and method implementation | Print each plot during execution and close its PDF device before opening the next. | |
 | Plot generation | Testing and verification | Inspect generated plots after rerunning the script. | Inspect axis labels, plotted values and biological meaning. |

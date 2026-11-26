@@ -107,6 +107,11 @@ Plotmeanabundance <- Abundance %>%
     group_by (Plot, Cultivation, Block) %>%
         summarise(MeanAbundance = mean(Abundance), .groups = "drop") 
 
+# creat results directory if it doesn't exist
+if (!dir.exists("results")) {
+    dir.create("results")
+}
+
 require(ggplot2)
 pdf("results/pound_hill_plot_abundance.pdf")
 ggplot(Plotmeanabundance,
