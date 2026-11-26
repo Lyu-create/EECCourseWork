@@ -201,7 +201,7 @@ All commands are run from the project root.
 | `README.md` | Documentation | Provide sufficient information for readers to repeat the checks. | Provide exact execution and testing commands in `README.md`. |
 | Git commits | Version-control practice | Make the development history easier to follow. | Commit individual functional revisions with concise commit messages. |
 | `pound_hill_analysis.R` | Problem-solving approach and method implementation | Keep interactive viewing outside the required batch execution | replace it with console-friendly inspection|
-| `pound_hill_analysis.R` | Problem-solving approach and method implementation | Zero counts were filtered out. | Compare quadrat identifiers before and after filtering, and manually check abundance and richness calculations. |
+| `pound_hill_analysis.R` | Problem-solving approach and method implementation | Zero counts were filtered out. | Although the number of quadrats do not differ between filtering out zero before and after grouping, the filter is applied aftering grouping so a quadrat will not be deleted if it has a zero count |
 | Plot generation | Problem-solving approach and method implementation | Print each plot during execution and close its PDF device before opening the next. | close the richness plot before creating the abundance plot and use the print command|
 | Plot generation | Testing and verification | Inspect generated plots after rerunning the script. | Inspect axis labels, plotted values and biological meaning. |
 | `README.md` | Documentation | Refresh the repository file listing. | |

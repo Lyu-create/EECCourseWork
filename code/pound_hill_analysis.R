@@ -54,12 +54,10 @@ length(unique(paste(MyWrangledData$Cultivation, MyWrangledData$Block, MyWrangled
 # make a loop counting if the count of species is greater than zero
 # add it to the subset
 require(tidyverse)
-richnessdata<-filter(MyWrangledData, Count > 0)
-head(richnessdata)
 
-Richnesstable <-richnessdata %>%
+Richnesstable <-MyWrangledData %>%
     group_by (Cultivation, Block, Plot, Quadrat) %>%
-        summarise(Richness = n_distinct(Species))
+        summarise(Richness = n_distinct(Species[Count > 0]))
 head(Richnesstable)
 
 # plot-level summary sorting by plot
