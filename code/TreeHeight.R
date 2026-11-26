@@ -54,5 +54,10 @@ TreeHeight <- function(degrees, distance) {
 MyData$height_m <- TreeHeight(MyData$Angle.degrees, MyData$Distance.m)
 head(MyData)
 
-# save
+# creat results directory if it doesn't exist
+if (!dir.exists("results")) {
+    dir.create("results")
+}
+
+# save as a new CSV file
 write.csv(MyData, "results/TreeHts.csv", row.names = FALSE)
