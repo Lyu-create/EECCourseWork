@@ -202,7 +202,7 @@ All commands are run from the project root.
 | Git commits | Version-control practice | Make the development history easier to follow. | Commit individual functional revisions with concise commit messages. |
 | `pound_hill_analysis.R` | Problem-solving approach and method implementation | Keep interactive viewing outside the required batch execution | replace it with console-friendly inspection|
 | `pound_hill_analysis.R` | Problem-solving approach and method implementation | Zero counts were filtered out. | Compare quadrat identifiers before and after filtering, and manually check abundance and richness calculations. |
-| Plot generation | Problem-solving approach and method implementation | Print each plot during execution and close its PDF device before opening the next. | |
+| Plot generation | Problem-solving approach and method implementation | Print each plot during execution and close its PDF device before opening the next. | close the richness plot before creating the abundance plot |
 | Plot generation | Testing and verification | Inspect generated plots after rerunning the script. | Inspect axis labels, plotted values and biological meaning. |
 | `README.md` | Documentation | Refresh the repository file listing. | |
 | Tree-height scripts | Testing and verification | Rerun one ordinary and one invalid case for each tree-height route. Check stderr, exit behaviour and whether any new result is written. A failed run should not leave a misleading new output. | |

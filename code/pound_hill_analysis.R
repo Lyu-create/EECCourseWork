@@ -79,7 +79,7 @@ ggplot(Plotmeanrichness,
        aes(x = Cultivation, y = MeanRichness)) +
   geom_boxplot() +
   geom_point()
-
+dev.off()
 
 # interpretation of the figure
 # May have the highest typical richness shown by the median of the box plot.
