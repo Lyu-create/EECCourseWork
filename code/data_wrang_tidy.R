@@ -42,8 +42,8 @@ MyWrangledData1 <- TempData |>
     names_to = "Species", # column name for the new column that will hold the species names 
     values_to = "Count" # column values become the new column that will hold the counts
   ) # columns of species (wide form) become rows of species (long form)
-head(MyWrangledData)
-tail(MyWrangledData)
+head(MyWrangledData1)
+tail(MyWrangledData1)
 
 # categorising into levels for categorical values
 MyWrangledData1 <- MyWrangledData1 |>
@@ -56,9 +56,9 @@ MyWrangledData1 <- MyWrangledData1 |>
     Count = as.integer(Count)
   )
 
-str(MyWrangledData)
-head(MyWrangledData)
-dim(MyWrangledData)
+str(MyWrangledData1)
+head(MyWrangledData1)
+dim(MyWrangledData1)
 
 
 # Save a derived table while leaving the raw files unchanged.

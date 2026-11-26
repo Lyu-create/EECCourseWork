@@ -5,7 +5,7 @@
 #
 # ARGUMENTS
 # degrees:  The angle of elevation of tree
-# distance: The distance from base of tree (e.g. meters)
+# distance: The distance from base of tree (e.g., meters)
 #
 # OUTPUT
 # The heights of the tree, same units as "distance"
@@ -54,5 +54,10 @@ TreeHeight <- function(degrees, distance) {
 MyData$height_m <- TreeHeight(MyData$Angle.degrees, MyData$Distance.m)
 head(MyData)
 
-# save
+# creat results directory if it doesn't exist
+if (!dir.exists("results")) {
+    dir.create("results")
+}
+
+# save as a new CSV file
 write.csv(MyData, "results/TreeHts.csv", row.names = FALSE)
