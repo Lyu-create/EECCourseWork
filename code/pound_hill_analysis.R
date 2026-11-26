@@ -75,10 +75,14 @@ head(Plotmeanrichness)
 # drawing figure of plot-level mean across cultivation treatments
 require(ggplot2)
 pdf("results/pound_hill_plot_richness.pdf")
-ggplot(Plotmeanrichness,
-       aes(x = Cultivation, y = MeanRichness)) +
-  geom_boxplot() +
-  geom_point()
+
+print(
+    ggplot(Plotmeanrichness,
+           aes(x = Cultivation, y = MeanRichness)) +
+        geom_boxplot() +
+        geom_point()
+)
+
 dev.off()
 
 # interpretation of the figure
@@ -114,10 +118,14 @@ if (!dir.exists("results")) {
 
 require(ggplot2)
 pdf("results/pound_hill_plot_abundance.pdf")
-ggplot(Plotmeanabundance,
-       aes(x = Cultivation, y = MeanAbundance)) +
-  geom_boxplot() +
-  geom_point()
+
+print(
+    ggplot(Plotmeanabundance,
+           aes(x = Cultivation, y = MeanAbundance)) +
+        geom_boxplot() +
+        geom_point()
+)
+
 dev.off()
 
 # October have the highest typical abundance shown by the median of the box plot
