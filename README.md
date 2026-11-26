@@ -48,6 +48,9 @@ cd EECCourseWork
 All execution commands in this README should be run from
 the project root unless otherwise specified.
 
+## Testing and Reproducibility
+The README commands were tested in a fresh clone of the repository by copying and executing them from the project root. Copilot in VS Code was also used to assist with code review and testing.
+
 ## Table of contents
 Assignment 1
 Assigement 2
@@ -186,56 +189,32 @@ It does not handle well large data set but sufficeint for small teaching data se
 
 pseudocodes
 -- for validate_record function:
-create a empty list for rejection reasons
+Create an empty list of rejection reasons.
 
-clean record id by moving surrounding whitespace, assign it to clean_record_id
-checking record_id
-    if missing record_id, add "missing record_id" to reasons
-    if record_id does not start with ST or end with three digits (five characters in total), add "invalid record_id" to reasons
-    if record_id is in accpted_ids, add "duplicate record_id" to reasons
+Clean record_id by removing surrounding whitespace.
+Check for missing values, invalid format (ST followed by three digits)
+and duplicate IDs.
 
-clean location by moving surrounding whitespace, assign it to clean_location
-define a set with valid_locations shown in the metadata
-define valid_locations_fold being case insensitive of valid_location using a loop
-check location
-    if missing location, add "missing location" to reasons
-    if location not in valid_locations, add "invalid location" to reasons
-save the caseinsensitive location into clean_location
+Clean location, genus and species by removing surrounding whitespace.
+Check for missing or invalid values against the metadata,
+using case-insensitive comparison.
+Standardise valid values.
 
-clean genus by moving surrounding whitespace, assign it to clean_genus
-define a set with valid_genus shown in the metadata
-define valid_genus_fold being case insensitive of valid_genus using a loop
-check genus
-    if missing genus, add "missing genus" to reasons
-    if genus not in valid_genus, add "invalid genus" to reasons
-save the caseinsensitive genus into clean_genus
+Check whether individually valid genus and species form a valid combination.
 
-clean species by moving surrounding whitespace, assign it to clean_species
-define a set with valid_species shown in the metadata
-define valid_species_fold being case insensitive of valid_species using a loop
-check species
-    if missing species, add "missing species" to reasons
-    if species not in valid_species, add "invalid species" to reasons
-save the caseinsensitive species into clean_species
+Validate distance and angle:
+    Check for missing, non-numeric and non-finite values.
+    Check permitted ranges:
+        0 < distance <= 100
+        0 < angle < 90
 
-check for genus and species combination
-    if the genus and species are all in valid_genus and valid_species but the combination is not a valid combination, add "invalid genus/species combination" to reasons
+Collect rejection reasons from all validation checks.
 
-check distance
-    if missing distance, add "missing distance_m" to reasons
-    if the distance is inf or nan or cannot be converted into a number, add "invalid distance_m" to reasons
-    if the distance can be converted into a number and is greater than 100 or no greater than 0, add "distance_m out of range"
+If any rejection reasons exist:
+    Return None and the list of reasons.
+Otherwise:
+    Return the cleaned record and an empty list.
 
-check angle
-    if missing angle, add "missing angle_degree" to reasons
-    if the angle is inf or nan or cannot be converted into a number, add "invalid angle_degree" to reasons
-    if the angle can be converted into a number and is no greater than 0 or no smaller than 90, add "angle_degree out of range" 
-
-each block checks a different validation rule so the function collects all reasons from each and then generate the output
-
-output:tuple[dict[str, str] | None, list[str]]
-invalid records are rows that failed at least one test above, returning to None and a list of reasons
-valid records are rows that passed all tests, returning to cleaned dictionary of column names, values and an empty list of reasons
 
 -- for process_record function:
 intialise variables: clean_records and issue list, accepted_ids set as empty
@@ -246,6 +225,7 @@ check whether a cleaned_row for the cleaned_records is returned
     if there is nothing, store the line number, record id and reasons and add the rejection reasons to the issue list
 Sort the accepted records in ascending order by record_id.
 return to list of accepted record rows and rejected record with the rejection reasons
+
 
 -- for summarise_oaks function: 
 intialise oak count as empty list
