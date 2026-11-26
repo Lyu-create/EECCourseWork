@@ -97,7 +97,7 @@ dev.off()
 # Why might the two responses tell different ecological stories?
 
 ## total abundance plot-level
-Abundance <-richnessdata %>%
+Abundance <-MyWrangledData %>%
     group_by (Cultivation, Block, Plot, Quadrat) %>%
         summarise(Abundance = sum(Count))
 head(Abundance)
