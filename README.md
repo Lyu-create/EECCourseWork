@@ -52,36 +52,29 @@ the project root unless otherwise specified.
 The README commands were tested in a fresh clone of the repository by copying and executing them from the project root. Copilot in VS Code was also used to assist with code review and testing.
 
 ## Table of contents
-Assignment 1
-Assigement 2
-Assignement 3 
-other codes
+- Assignment 1
+- Assignment 2
+- Assignment 3 
+- other codes
 
 --------------------------------------------------------------
 ## Approach to Formative Feedback
+
 Some repeated or overlapping feedback across assignments is addressed only once to avoid duplication.
 ---------------------------------------------------------------
 ## Assignment 1 (bash)
-1 DNA sequence practical (Unix)
-input files: data/fasta/407228326.fasta, data/fasta/407228412.fasta and data/fasta/e_coli.fasta
-Run command from project root by copying question by question/line by line to the terminal
+### Assignment 1 – Unix and Shell Scripting
 
-2 converters
-    limitations: converting one file at a time, change the symbol regardless of the input format
+All commands should be run from the project root.
 
-2.1 tabtocsv improved
-input path: data/tab-example.tsv
-Run command from project root: bash code/tabtocsv.sh data/tab-example.tsv
-output path: results/tab-example.tsv.csv
+| Script | Run command and testing instructions | Input | Output | Description and checks |
+|---|---|---|---|---|
+| `unixPrac1.txt` | Copy and execute each command from `code/unixPrac1.txt` individually in the Bash terminal. | `data/fasta/407228326.fasta` <br> `data/fasta/407228412.fasta` <br> `data/fasta/e_coli.fasta` | Terminal output | Demonstrates Unix command-line processing of DNA sequence data. Check each result against the corresponding practical question. |
+| `tabtocsv.sh` | `bash code/tabtocsv.sh data/tab-example.tsv` | `data/tab-example.tsv` | `results/tab-example.tsv.csv` | Converts tab-separated text to comma-separated text. Inspect the generated file to confirm that tabs have been replaced with commas. |
+| `csvtospace.sh` | `bash code/csvtospace.sh data/temperatures/1800.csv` <br><br> `bash code/csvtospace.sh data/temperatures/1801.csv` <br><br> `bash code/csvtospace.sh data/temperatures/1802.csv` <br><br> `bash code/csvtospace.sh data/temperatures/1803.csv` | `data/temperatures/1800.csv` <br> `data/temperatures/1801.csv` <br> `data/temperatures/1802.csv` <br> `data/temperatures/1803.csv` | `results/1800.csv.txt` <br> `results/1801.csv.txt` <br> `results/1802.csv.txt` <br> `results/1803.csv.txt` | Converts commas to spaces. Inspect each generated file to confirm the conversion. |
 
-2.2 csvtospace.sh
-input path: data/temperatures/1800.csv, data/temperatures/1801.csv, data/temperatures/1802.csv and data/temperatures/1803.csv
-run command from project root separately: 
-    bash code/csvtospace.sh data/temperatures/1800.csv
-    bash code/csvtospace.sh data/temperatures/1801.csv
-    bash code/csvtospace.sh data/temperatures/1802.csv
-    bash code/csvtospace.sh data/temperatures/1803.csv
-output path: results/1800.csv.txt, results/1801.csv.txt, results/1802.csv.txt, results/1803.csv.txt
+**Converter limitations:** Both converters process one file at a time and replace delimiter characters regardless of the input file format. They do not interpret quoted fields or validate the underlying data structure.
+
 
 ### Response to formative feedback
 | Practical/File | Feedback category | Feedback received | Changes made |
@@ -99,77 +92,51 @@ output path: results/1800.csv.txt, results/1801.csv.txt, results/1802.csv.txt, r
 
 
 --------------------------------------------------------------
-## Assigment 2 (python)
-python project: cleaning up silwood tree data
-data location:/data/silwood_trees_raw.csv and silwood_trees_metadata.md
+## Assignment 2 – Python: Cleaning Silwood Tree Data
 
-input: `record_id` | Survey-record identifier; `location` | Synthetic survey location;`genus` | Tree genus;  `species` | Tree species epithet; `distance_m` | Horizontal distance from observer to tree, in metres; `angle_degrees` | Angle from horizontal to treetop, in degrees
+This practical demonstrates data validation, cleaning, error reporting and summarising tree survey records using Python.
 
-final output: three file in results
-1. cleaned data with no spaces at the begining or end of variables (results/silwood_trees_clean.csv)
-2. source row, reacord id and rejected reasons (results/silwood_tree_issues.csv)
-3. the total number of valid oaks by species (results/oak_species_counts.csv)
+### Scripts, inputs and outputs
 
-run the code by using the command from the project root using: python3 code/clean_silwood_trees.py
+All commands are run from the project root.
 
-testing the code by asserting validate_record, process_records and summarise_oaks by giving normal and error_expected cases.
+| Script | Run command | Input | Output | Description and checks |
+|---|---|---|---|---|
+| `clean_silwood_trees.py` | `python3 code/clean_silwood_trees.py` | `data/silwood_trees_raw.csv` <br> `data/silwood_trees_metadata.md` (validation reference) | `results/silwood_trees_clean.csv` — cleaned and validated records. <br><br> `results/silwood_tree_issues.csv` — rejected records, source row numbers, record IDs and rejection reasons. <br><br> `results/oak_species_counts.csv` — total number of valid oak records by species. | Validates records, removes surrounding whitespace, standardises valid values, records rejection reasons and summarises accepted oak records. |
+| `test_silwood_trees.py` | `python3 code/test_silwood_trees.py` | Test records and functions imported from `clean_silwood_trees.py` | Test results and assertion errors if checks fail | Tests `validate_record()`, `process_records()` and `summarise_oaks()` using valid and invalid cases. |
 
-### limitations: 
-In the validate_record function the recognised genus and species are limited, so need updating valid_genus, valid_species, valid_comb maually. Location also have the same restriction. In the summarise_oaks function, only two species are recognised.
-It does not handle well large data set but sufficeint for small teaching data set, also due to this purpose, the data may not reflect real fieldwork data.
+### Input data structure
 
-### pseudocodes
--- for validate_record function:
-Create an empty list of rejection reasons.
+| Column | Description |
+|---|---|
+| `record_id` | Survey-record identifier |
+| `location` | Synthetic survey location |
+| `genus` | Tree genus |
+| `species` | Tree species epithet |
+| `distance_m` | Horizontal distance from the observer to the tree, in metres |
+| `angle_degrees` | Angle from the horizontal to the treetop, in degrees |
 
-Clean record_id by removing surrounding whitespace.
-Check for missing values, invalid format (ST followed by three digits)
-and duplicate IDs.
+### Pseudocode
 
-Clean location, genus and species by removing surrounding whitespace.
-Check for missing or invalid values against the metadata,
-using case-insensitive comparison.
-Standardise valid values.
+| Function | Algorithm | Return value |
+|---|---|---|
+| `validate_record()` | 1. Initialise an empty list of rejection reasons. <br> 2. Remove surrounding whitespace from the record ID and check for missing, invalid or duplicate IDs. Valid IDs consist of `ST` followed by three digits. <br> 3. Clean location, genus and species, checking them against metadata using case-insensitive comparison. <br> 4. Standardise valid values and check genus–species combinations. <br> 5. Check distance and angle for missing, non-numeric, non-finite and out-of-range values (`0 < distance <= 100` and `0 < angle < 90`). <br> 6. Collect rejection reasons from all validation checks. | Valid record: cleaned dictionary and an empty list. <br><br> Invalid record: `None` and a list of rejection reasons. |
+| `process_records()` | 1. Initialise empty lists for cleaned records and issues, and an empty set for accepted IDs. <br> 2. Iterate through the input rows, starting at CSV line 2. <br> 3. Call `validate_record()` for each row. <br> 4. Add accepted records to the cleaned-record list. <br> 5. For rejected records, store the source row number, record ID and rejection reasons. <br> 6. Sort accepted records in ascending order by record ID. | List of accepted records and list of rejected-record issues. |
+| `summarise_oaks()` | 1. Initialise an empty list for oak counts. <br> 2. Initialise counts for *Quercus robur* and *Quercus petraea* to zero. <br> 3. Iterate through accepted records and increase the corresponding species count. <br> 4. Add each oak species with a count greater than zero to the summary list. | List containing oak species and their counts. |
 
-Check whether individually valid genus and species form a valid combination.
+### Limitations
 
-Validate distance and angle:
-    Check for missing, non-numeric and non-finite values.
-    Check permitted ranges:
-        0 < distance <= 100
-        0 < angle < 90
+| Area | Limitation |
+|---|---|
+| Taxonomic validation | Recognised genera, species and genus–species combinations are restricted to predefined values. These require manual updates when processing additional taxa. |
+| Location validation | Only predefined survey locations are recognised. |
+| Oak summary | Only *Quercus robur* and *Quercus petraea* are included. |
+| Scalability | Designed for a small teaching dataset. Performance on large datasets has not been evaluated. |
+| Data representativeness | The synthetic teaching dataset may only partially represent the complexity of real fieldwork data. |
 
-Collect rejection reasons from all validation checks.
-
-If any rejection reasons exist:
-    Return None and the list of reasons.
-Otherwise:
-    Return the cleaned record and an empty list.
-
-
--- for process_record function:
-intialise variables: clean_records and issue list, accepted_ids set as empty
-loop through all the rows starting from line 2
-call validation_record function for each row
-check whether a cleaned_row for the cleaned_records is returned
-    if there is a clean row, add it to the clean_record list
-    if there is nothing, store the line number, record id and reasons and add the rejection reasons to the issue list
-Sort the accepted records in ascending order by record_id.
-return to list of accepted record rows and rejected record with the rejection reasons
-
-
--- for summarise_oaks function: 
-intialise oak count as empty list
-set the count of Quercus robur and Quercus petraea as 0
-For each row in clean_records
-    if the species is Quercus robur
-        increase Quercus robur count by one
-    or if the species is Quercus petraea
-        increase Quercus petraea count by one
-For each oak species, if its count is greater than zero, add a row containing the species name and its count to the oak_counts list.
-Return the oak_counts list containing the species and their counts.
 
 ### Response to formative feedback
+| Practical/File | Feedback category | Feedback received | Changes made |ve feedback
 | Practical/File | Feedback category | Feedback received | Changes made |
 | --- | --- | --- | --- |
 | clean silwood tree data | code completeness and functional correctness | difference in the species field of row 2 in oak_species_counts.csv in both test runs |
@@ -183,75 +150,62 @@ Return the oak_counts list containing the species and their counts.
 
 
 --------------------------------------------------------------
-## Assigmment 3 (R)
-1.1 Treeheight calculation
-This calculates heights of trees given distance of each tree from its base and angle to its top, using  the trigonometric formula 
-- Run command from project root:  Rscript code/TreeHeight.R in linux and source("code/TreeHeight.R") in R terminal
-- input path: data/trees.csv
-- output path: results/TreeHts.csv
+## Assignment 3 – R: Tree Height Calculation and Pound Hill Analysis
 
-checking:  using the above commands, the output header is 
-|Species | Distance.m | Angle.degrees | height_m |
-| --- | --- | --- | --- |
+### Scripts, inputs and outputs
 
-and there are 120 rows in the output.
+All commands are run from the project root.
 
-the record checked is:
-"Carpinus betulus",39.501561964862,30.2981362491846"
-```r
-39.501561964862 * tan (30.2981362491846 * pi / 180)
-[1] 23.08113
-```
-Consistent with the value in TreeHts.csv "23.0811254247168"
+| Script | Bash command | R console command | Input | Output | Description and checks |
+|---|---|---|---|---|---|
+| `TreeHeight.R` | `Rscript code/TreeHeight.R` | `source("code/TreeHeight.R")` | `data/trees.csv` | `results/TreeHts.csv` | Calculates tree heights from horizontal distances and angles using trigonometry. Output dimensions and an individual height calculation were checked. |
+| `get_TreeHeight.R` and `run_get_TreeHeight.sh` | `bash code/run_get_TreeHeight.sh` | Run through the Bash wrapper | `data/trees.csv` | `results/trees_treeheights.csv` | Generalises the tree-height calculation. Different input paths with the same basename may produce the same output filename in `results/`. |
+| `pound_hill_analysis.R` | `Rscript code/pound_hill_analysis.R` | `source("code/pound_hill_analysis.R")` | `data/pound_hill_data.csv` <br> `data/pound_hill_meta_data.csv` | `results/pound_hill_plot_richness.csv` <br> `results/pound_hill_plot_richness.pdf` <br> `results/pound_hill_plot_abundance.pdf` | Analyses how mean plant species richness and abundance per plot vary among the March, May and October cultivation treatments. |
 
-Rerunning the script replaces the result rather than appending to the original rows.
+### TreeHeight.R – Testing evidence
 
-| Test | command | expected output | result |
-| --- | --- | --- | --- |
-| Reordered columns |
-| Additional columns |
-| Missing columns |
-| Distance.m is character |
-| Distance.m is infinite |
-| Distance.m < 0 |
-| Distance.m = 0 |
-| Distance.m = 100 |
-| Distance.m > 100 |
-| Angle.degrees is character |
-| Angle.degrees is infinite |
-| Angle.degrees < 0 |
-| Angle.degrees = 0 |
-| Angle.degrees = 90 |
-| Angle.degrees > 90 |
+| Check | Method | Observed result |
+|---|---|---|
+| Output creation | Run `Rscript code/TreeHeight.R` from the project root. | `results/TreeHts.csv` was created. |
+| Column names | Inspect the output header. | `Species`, `Distance.m`, `Angle.degrees`, `height_m`. |
+| Number of records | Inspect the number of data rows. | 120 rows. |
+| Numerical accuracy | Manually calculate the height of the selected *Carpinus betulus* record using `39.501561964862 * tan(30.2981362491846 * pi / 180)`. | Manual calculation: `23.08113` m. CSV value: `23.0811254247168` m. The values agree to the displayed precision. |
+| Reproducibility | Rerun the script and inspect the output. | The existing output is replaced, with no additional rows appended. |
 
+### Tree-height validation tests
 
+| Test case | Command or test method | Expected output | Observed result |
+|---|---|---|---|
+| Reordered columns | | | |
+| Additional columns | | | |
+| Missing columns | | | |
+| `Distance.m` is character | | | |
+| `Distance.m` is infinite | | | |
+| `Distance.m < 0` | | | |
+| `Distance.m = 0` | | | |
+| `Distance.m = 100` | | | |
+| `Distance.m > 100` | | | |
+| `Angle.degrees` is character | | | |
+| `Angle.degrees` is infinite | | | |
+| `Angle.degrees < 0` | | | |
+| `Angle.degrees = 0` | | | |
+| `Angle.degrees = 90` | | | |
+| `Angle.degrees > 90` | | | |
 
-1.2 generalise tree-height script
-- Run command from project root:  bash code/run_get_TreeHeight.sh
-- input path: data/trees.csv
-- output path: results/trees_treeheights.csv
-- filename limitation: Different input paths with the same basename will produce the same output filename in results/
+### Response to formative feedback
 
-2. pound_hill data visulisation and interpretation
-This data is to analyse mean plant species richness and abundance per plot varying among the March, May and October cultivation treatments.
-- Run command from project root: Rscript code/pound_hill_analysis.R
-- input path: data/pound_hill_data.csv and data/pound_hill_meta_data.csv
-- output path: results/pound_hill_plot_richness.csv, results/pound_hill_plot_richness.pdf, results/pound_hill_plot_abundance.pdf
-
-## Response to formative feedback
-| Practical/File | Feedback category | Feedback received | Changes made |
-| --- | --- | --- | --- |
-| results/ | repository organisation and workflow disipline | make output creation reproducible form a newly cloned copu of your repository | create results/ each time a script is ran
-| general | code quality and style | keep names descriptive, use comments and avoid repeating calculations
-| README | Documention | shold be able to repeat checks | (give exact commands in README.md)
-| commit | version-control practice | needs to be easier to follow | (commit each functional revision with short message rather than one large final commit)
-| pound hill | problem_solving approach and method implementation | keep interactice viewing outside the required batch run or replace with console freindly inspection |
-| pound hill | problem_solving approach and method implementation | filtered out zero counts | (compare quadrat identifier before and after filter, check the adbudance and richness manually)|
-| plot generation| problem_solving approach and method implementation | print each plot during execution and close its pdf device before opening the next |
-| plot generation| problem_solving approach and method implementation | inspection needed after rerun | (inspect labels, plotted values and biological meanings)
-| README | Documnetation | refresh file listing |
-| Tree height routes | testing |Rerun one ordinary and one invalid case for each tree-height route. Check stderr, exit behaviour and whether any new result is written; a failed run should not leave a misleading new output | 
-
+| Practical / File | Feedback category | Feedback received | Changes made and verification |
+|---|---|---|---|
+| `results/` | Repository organisation and workflow discipline | Make output creation reproducible from a newly cloned repository. | Scripts create `results/` when needed. |
+| General | Code quality and style | Keep variable names descriptive, use comments and avoid repeating calculations. | |
+| `README.md` | Documentation | Provide sufficient information for readers to repeat the checks. | Provide exact execution and testing commands in `README.md`. |
+| Git commits | Version-control practice | Make the development history easier to follow. | Commit individual functional revisions with concise commit messages. |
+| `pound_hill_analysis.R` | Problem-solving approach and method implementation | Keep interactive viewing outside the required batch execution or replace it with console-friendly inspection. | |
+| `pound_hill_analysis.R` | Problem-solving approach and method implementation | Zero counts were filtered out. | Compare quadrat identifiers before and after filtering, and manually check abundance and richness calculations. |
+| Plot generation | Problem-solving approach and method implementation | Print each plot during execution and close its PDF device before opening the next. | |
+| Plot generation | Testing and verification | Inspect generated plots after rerunning the script. | Inspect axis labels, plotted values and biological meaning. |
+| `README.md` | Documentation | Refresh the repository file listing. | |
+| Tree-height scripts | Testing and verification | Rerun one ordinary and one invalid case for each tree-height route. Check stderr, exit behaviour and whether any new result is written. A failed run should not leave a misleading new output. | |
 
 
 
