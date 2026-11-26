@@ -8,6 +8,8 @@ def load_observations(path):
 def parse_count(count_text):
     if count_text == "":
         return None
+    if not isinstance(count_text, str):
+        raise ValueError("The input must be text")
     try:
         if int(count_text) >= 0:
             return int(count_text)
