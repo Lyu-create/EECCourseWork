@@ -259,62 +259,17 @@ This data is to analyse mean plant species richness and abundance per plot varyi
 # other codes
 bash scripts (7)
 ----------------Shell scripting------------
-- variables.sh; bash code/variables.sh or with arguments
-    enter string and two number as the output required
-    sentense can be printed even without parameter, need "$#" to count the number of arguments
+### Bash practice scripts (7)
 
-- MyExampleScript.sh; bash code/MyExampleScript.sh
-    print login name that can be changes or unset. 
-    However whoami always show the effective user.
-
-- boilerplate.sh; bash code/boilerplate.sh
-    minal bash script: shebang(first line) telling computer to use Bash to readh the script;
-    comment notes using "#"
-    code is the scripts body, exit 0 means success but maybe not scientifically correct. Errors are captured with non-zeor values
-    good practice to name the file with the extension of its language
-
-- CheckLabel.sh
-    echo "$?" prints the exit status
-    run with bash code/CheckLabel.sh
-    argument is oak/pine -> oak/pine, 0
-    not equal to one argument -> Usage: code/CheckLabel.sh oak|pine, 2
-    one argument that is not oak -> Unknown label: <>, 1
-
-- CountLines.sh: count the number of lines using new line characters
-    bash code/CountLines.sh data/tab-example.tsv -> 4
-    use cat -A data/tab-example to inspect the number of new line characters "$"
-    or test in temporary directory:
-        shell_practice=$(mktemp -d)
-        printf 'species\tcount\noak\t12\n' > "$shell_practice/test.txt"
-        printf 'Practice data: %s\n' "$shell_practice"
-        bash code/CountLines.sh $shell_practice/test.txt -> 2
-
-- ConcatenateTwoFiles.sh
-    test in temporary directory: 
-        printf 'oak\n' > "$shell_practice/first.txt"
-        printf 'pine\n' > "$shell_practice/second.txt"
-        bash code/ConcatenateTwoFiles.sh "$shell_practice/first.txt" "$shell_practice/second.txt" "$shell_practice/combined.txt"
-    run the second time to check it does not duplicate the whole result
-
-- tiff2_png.sh
-    ImageMagick can be used to coenvert tiff to png is installed separately (not required here). Check with command -v magick and command -v convert, if absence, there will not be an output path.
-    free tiff can be downloaded from the website
-        if cannot find tiff image, use bash -n code/tiff2_png.sh to inspect syntax error but does not guarantee conversion success
-    test in temporary directory: 
-        project_root=$PWD
-        script_path=$project_root/code/tiff2_png.sh
-        mkdir "$shell_practice/images"
-        cd "$shell_practice/images"
-        pwd
-    with tiff image, check the files that will be produced with (replace the temp path with your own, make sure you are in the temporary directory)
-        for filename in *.tif
-        do
-            printf 'convert <%s> <%s>\n' "$filename" "$(basename "$filename" .tif).png" 
-        done
-        if cannot find the file, the output would be "convert <*.tif> <*.png>"
-    run the script with: bash $script_path
-    remember to return back to project root by cd $project_root
-    limitations: no matches, uppercase extensions, option-like filenames, output collisions, converter failure, adding optional directory argument. existing png may be overwritten.
+| Script | Run command and testing instructions | Input | Output | Description and checks |
+|---|---|---|---|---|
+| `variables.sh` | `bash code/variables.sh` <br><br> `bash code/variables.sh 1 "two words"` | User-entered text, two numbers and optional command-line arguments | Terminal output | Demonstrates variables and command-line arguments. Tested with and without arguments. `$#` reports the actual number of arguments supplied. |
+| `MyExampleScript.sh` | `bash code/MyExampleScript.sh` | `$USER` environment variable | Terminal output | `$USER` commonly stores the login name but can be changed or unset. `whoami` reports the effective user. |
+| `boilerplate.sh` | `bash code/boilerplate.sh` | None | Terminal output and exit status | Demonstrates the basic structure of a Bash script, including the shebang, comments, script body and exit status. Exit status `0` indicates successful execution. Scientific correctness requires further checks. |
+| `CheckLabel.sh` | `bash code/CheckLabel.sh oak` <br><br> `bash code/CheckLabel.sh` <br><br> `bash code/CheckLabel.sh birch` <br><br> `bash code/CheckLabel.sh oak pine` <br><br> Run `echo "$?"` immediately after each command. | Species label and command-line arguments | Terminal output, error messages and exit status | Valid label: `0`. <br> Incorrect argument count: `2`. <br> Unknown label: `1`. |
+| `CountLines.sh` | `bash code/CountLines.sh data/tab-example.tsv` <br><br> `cat -A data/tab-example.tsv` <br><br> **Temporary test:** <br> `shell_practice=$(mktemp -d)` <br> `printf 'species\tcount\noak\t12\n' > "$shell_practice/test.txt"` <br> `bash code/CountLines.sh "$shell_practice/test.txt"` | `data/tab-example.tsv` or a temporary text file | Line count displayed in the terminal | Counts newline characters. Confirmed 4 newline characters in `tab-example.tsv` and 2 in the temporary test file. `$` in the output of `cat -A` indicates a line ending. |
+| `ConcatenateTwoFiles.sh` | `shell_practice=$(mktemp -d)` <br> `printf 'oak\n' > "$shell_practice/first.txt"` <br> `printf 'pine\n' > "$shell_practice/second.txt"` <br><br> `bash code/ConcatenateTwoFiles.sh "$shell_practice/first.txt" "$shell_practice/second.txt" "$shell_practice/combined.txt"` <br><br> Repeat the final command and inspect the output using `cat "$shell_practice/combined.txt"`. | Two text files and an output path | `combined.txt` in the temporary directory | Combines two files. Rerunning checks whether the output remains reproducible without duplicated contents. The output path must be distinct from both input paths. |
+| `tiff2_png.sh` | **Check dependencies:** <br> `command -v magick` <br> `command -v convert` <br><br> **Prepare a temporary directory from the project root:** <br> `project_root="$PWD"` <br> `script_path="$project_root/code/tiff2_png.sh"` <br> `shell_practice=$(mktemp -d)` <br> `mkdir "$shell_practice/images"` <br> `cd "$shell_practice/images"` <br><br> Copy expendable lowercase `.tif` images into this directory. <br><br> **Run conversion:** <br> `bash "$script_path"` <br> `cd "$project_root"` <br><br> **Syntax-only check:** <br> `bash -n code/tiff2_png.sh` | Lowercase `.tif` images in the temporary directory | `.png` images in the same directory | Conversion tested using ImageMagick, which is required for actual image conversion. A syntax check alone cannot verify successful conversion. <br><br> **Limitations:** unmatched file patterns, uppercase extensions, option-like filenames, output collisions and converter failures. Existing PNG files may be overwritten. The script operates in the current directory. |
 
 python scripts (12)
 - loops.py
@@ -338,7 +293,8 @@ python scripts (12)
        date: Non-empty text identifying the sampling date. Supplied dates use YYYY-MM-DD; calendar validation is outside this exercise.
        count: Empty text "" means missing; otherwise text that int can convert to a non-negative integer. Zero is a known observation. 
 - test_observations_practice.py
-    run with python3 code/test_observations_practice.py
+    run with python3 code/test_observations_practice.py,
+    no output means passed assertions checks.
 - debugme.py
     debug with %pdb, run code/debugme.py
         n: continue execution until the next line
@@ -434,6 +390,7 @@ This should give 6 rows and 6 columns
 
 # AI statement
 I acknowledge the use of ChatGPT https://chatgpt.com/ for distguishing the concepts ,clarifiying pseudocode, generating test data, checking the grammar errors in my script.
+Copilot was used to run scripts according to the readme and help with pushing when there are conflicts between local and github repository.
 
 ## Author
 - **Name:** Xinyi Lyu
