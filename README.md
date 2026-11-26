@@ -61,7 +61,7 @@ other codes
 ## Approach to Formative Feedback
 Some repeated or overlapping feedback across assignments is addressed only once to avoid duplication.
 ---------------------------------------------------------------
-# Assignment 1 (bash)
+## Assignment 1 (bash)
 1 DNA sequence practical (Unix)
 input files: data/fasta/407228326.fasta, data/fasta/407228412.fasta and data/fasta/e_coli.fasta
 Run command from project root by copying question by question/line by line to the terminal
@@ -83,7 +83,7 @@ run command from project root separately:
     bash code/csvtospace.sh data/temperatures/1803.csv
 output path: results/1800.csv.txt, results/1801.csv.txt, results/1802.csv.txt, results/1803.csv.txt
 
-## Response to formative feedback
+### Response to formative feedback
 | Practical/File | Feedback category | Feedback received | Changes made |
 | --- | --- | --- | --- |
 | General | Reproducibility | dependen too much on local setup | use relative paths starting from project root 
@@ -99,7 +99,7 @@ output path: results/1800.csv.txt, results/1801.csv.txt, results/1802.csv.txt, r
 
 
 --------------------------------------------------------------
-# Assigment 2 (python)
+## Assigment 2 (python)
 python project: cleaning up silwood tree data
 data location:/data/silwood_trees_raw.csv and silwood_trees_metadata.md
 
@@ -114,11 +114,11 @@ run the code by using the command from the project root using: python3 code/clea
 
 testing the code by asserting validate_record, process_records and summarise_oaks by giving normal and error_expected cases.
 
-## limitations: 
+### limitations: 
 In the validate_record function the recognised genus and species are limited, so need updating valid_genus, valid_species, valid_comb maually. Location also have the same restriction. In the summarise_oaks function, only two species are recognised.
 It does not handle well large data set but sufficeint for small teaching data set, also due to this purpose, the data may not reflect real fieldwork data.
 
-## pseudocodes
+### pseudocodes
 -- for validate_record function:
 Create an empty list of rejection reasons.
 
@@ -169,7 +169,7 @@ For each row in clean_records
 For each oak species, if its count is greater than zero, add a row containing the species name and its count to the oak_counts list.
 Return the oak_counts list containing the species and their counts.
 
-## Response to formative feedback
+### Response to formative feedback
 | Practical/File | Feedback category | Feedback received | Changes made |
 | --- | --- | --- | --- |
 | clean silwood tree data | code completeness and functional correctness | difference in the species field of row 2 in oak_species_counts.csv in both test runs |
@@ -183,7 +183,7 @@ Return the oak_counts list containing the species and their counts.
 
 
 --------------------------------------------------------------
-# Assigmment 3 (R)
+## Assigmment 3 (R)
 1.1 Treeheight calculation
 This calculates heights of trees given distance of each tree from its base and angle to its top, using  the trigonometric formula 
 - Run command from project root:  Rscript code/TreeHeight.R in linux and source("code/TreeHeight.R") in R terminal
@@ -290,82 +290,23 @@ All commands are run from the project root. For IPython commands, start an inter
 | `debugme.py` | `python3 code/debugme.py` <br><br> Interactive debugging: `python3 -m pdb code/debugme.py` | `%pdb on` <br> `%run code/debugme.py` | Numerical argument supplied to `buggyfunc()` | Debugger output and error messages | Demonstrates debugging using `pdb`, `%pdb` and `breakpoint()`. Debugger commands include `n` (next line), `Enter` (repeat previous command), `s` (step into a function), `p x` (print variable), `pp locals()` (display local variables), `c` (continue), `l` (list surrounding code), `r` (continue until the function returns) and `q` (quit). Demonstrates specific exception handling using `try` and `except`. |
 
 
-R scripts (11)
-----------------section: biological computing in R------------
-- basic_io.R: import file and create a new file with added or omitted columns or rows
-    data: data/trees.csv
-    run from the coursework project root with Rscript code/basic_io.R
+### R practice scripts (11)
 
-- boilerplate.R: making a function that shows the types of the inputed two arguments separately
-    in the R console: source("code/boilerplate.R")
+All commands are run from the project root. For interactive R commands, start an R session using `R`.
 
-- control_flow.R
-    run each block seperately by sending or pasting into the R console
-    if: run some block of code only when condition is true
-    for: repeat task over some range of input values
-    while: perform operation till some condition met
-    test the whole by running in R console source("code/control_flow.R") or Rscript code/control_flow.R on linux
-
-- r_conditionals.R: functions with conditionals, checking for even number, whether a number is a power of 2 and prime numbers.
-    run in R console with source("code/r_conditionals.R"), check with print(is.even(6)), print(is.power2(4)) and print(is.prime(3)).
-    or Rscript code/r_conditionals.R on linux which gives the output directly
-
-- break.R: control flow with break, breaking at a certain iteration
-    run in R console with source("code/break.R")
-
-- next.R: control flow with next, checking and printing the odds numbers throughout iteration
-    run in R console with source("code/next.R")
-
-- try.R: catch error using try() in generated random number, carry on the iteration even when error occurs
-    run in R console with source("code/try.R")
-
-- browse.R: debuging using browse() in a generated population, showing the values on each iteration.
-    run in R console with source("code/browse.R")
-    in this mode: Browse[1]>
-        n: execute the next line.
-        c: exit browser and continue execution
-        Q: exit browser and abort, return to top-level.
-        use N or t to see the list of values
-        ls() to insepct all variables in the function
-    At first breakpoint, t was 2, N[t] was  2.718282. after entering c, it is confirmed that the loop paused again at t = 3.
-  
-  limtiation: need to know where about the bug is
-
-- observations_practice.R
-using both "biological computing in R" and "data management and data visualisation" sections
-data: data/bootcamp_observations_invalid.csv, giving an error mesage of "Count values must be non-negative integers".
-create a figure in results/known_totals.png when using data/bootcamp_observations.csv.
-
-----------------section: data management and data visualisation------------
-- data_wrang
-
-- data_wrang_tidy.R
-    Use tidyr::pivot_longer(), tested with:
-
-```{r} 
-TempData_test <- data.frame(
-    Cultivation = c("March", "May"),
-    Block = c("A", "B"),
-    Plot = c(1, 2),
-    Quadrat = c("Q1", "Q2"),
-    Grass = c(10, 8),
-    Clover = c(5, 7),
-    Daisy = c(3, 2)
-)
-print(TempData_test)
-```
-This should give 2 rows, 7 columns (4 identifying columns and 3 species columns)
-
-```{r}
-MyWrangledData_test <- TempData_test |>
-  tidyr::pivot_longer(
-    cols = -c(Cultivation, Block, Plot, Quadrat),
-    names_to = "Species",
-    values_to = "Count"
-)
-print(MyWrangledData_test)
-```
-This should give 6 rows and 6 columns
+| Script | Bash command | R console command | Input | Output | Description and checks |
+|---|---|---|---|---|---|
+| `basic_io.R` | `Rscript code/basic_io.R` | `source("code/basic_io.R")` | `data/trees.csv` | Modified data file | Demonstrates importing, modifying and exporting data, including selecting or removing rows and columns. |
+| `boilerplate.R` | `Rscript code/boilerplate.R` | `source("code/boilerplate.R")` | Two function arguments | Argument types displayed in the console | Demonstrates defining a function and identifying the data types of its arguments. |
+| `control_flow.R` | `Rscript code/control_flow.R` | `source("code/control_flow.R")` | Values defined within the script | Console output | Demonstrates `if` (conditional execution), `for` (iteration over a sequence) and `while` (iteration while a condition remains true). Individual blocks can also be tested separately in the R console. |
+| `r_conditionals.R` | `Rscript code/r_conditionals.R` | `source("code/r_conditionals.R")` <br><br> `print(is.even(6))` <br> `print(is.power2(4))` <br> `print(is.prime(3))` | Numerical values | Console output | Demonstrates conditional functions for identifying even numbers, powers of two and prime numbers. |
+| `break.R` | `Rscript code/break.R` | `source("code/break.R")` | Values defined within the script | Console output | Demonstrates using `break` to terminate a loop when a specified condition is met. |
+| `next.R` | `Rscript code/next.R` | `source("code/next.R")` | Values defined within the script | Odd numbers displayed in the console | Demonstrates using `next` to skip the current iteration and continue to the following one. |
+| `try.R` | `Rscript code/try.R` | `source("code/try.R")` | Randomly generated values | Console output and error messages | Demonstrates error handling using `try()`. The loop continues executing even when an iteration encounters an error. |
+| `browse.R` | Start an interactive R session using `R`. | `source("code/browse.R")` | Initial population size, growth rate and number of generations | Debugger output and exponential growth figure | Demonstrates interactive debugging using `browser()`. At the `Browse[1]>` prompt, use `n` (next line), `c` (continue), `Q` (abort), `N` (population vector), `t` (current iteration) and `ls()` (list local variables). At the first breakpoint, `t` was `2` and `N[t]` was approximately `2.718282`. After entering `c`, the loop paused again at `t = 3`. |
+| `observations_practice.R` | `Rscript code/observations_practice.R` | `source("code/observations_practice.R")` | `data/bootcamp_observations.csv` <br> `data/bootcamp_observations_invalid.csv` | `results/known_totals.png` and validation error messages | Integrates biological computing, data management and visualisation. The invalid dataset produces the error message "Count values must be non-negative integers". The ordinary dataset generates a figure of known totals. |
+| `data_wrang.R` | `Rscript code/data_wrang.R` | `source("code/data_wrang.R")` | See input data specified in the script | Wrangled data | Demonstrates data manipulation and reshaping using base R. |
+| `data_wrang_tidy.R` | `Rscript code/data_wrang_tidy.R` | `source("code/data_wrang_tidy.R")` | Wide-format species abundance data | Long-format species abundance data | Demonstrates reshaping data using `tidyr::pivot_longer()`. A test dataset containing 2 rows and 7 columns, including 4 identifying columns and 3 species columns, was used. The expected reshaped dataset contains 6 rows and 6 columns. Requires the `tidyr` package. |
 
 
 # AI statement
