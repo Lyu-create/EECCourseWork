@@ -136,17 +136,19 @@ All commands are run from the project root.
 
 
 ### Response to formative feedback
-| Practical/File | Feedback category | Feedback received | Changes made |ve feedback
 | Practical/File | Feedback category | Feedback received | Changes made |
-| --- | --- | --- | --- |
-| clean silwood tree data | code completeness and functional correctness | difference in the species field of row 2 in oak_species_counts.csv in both test runs |
-| clean silwood tree data | code quality and style | use more descriptive names and add short comments (reason for a validation check or data-cleaning step when not obvious)|
-| README.md | documentation | make it more useful (add purpose of data cleaner, how to run the script and test for root, the files created)
-| README.md | Documentation | test instruction in a newly cloned copy of repository with git clone, enter the folder and run each readme command exactly as written. if something fials, correct the command or add the missing step
-| general | version control practice | check for one coherent wotking change (and then write concise meessage for the name of the change and why it is needed when not obvious)
-| clean silwood tree data | basic error handling and input validation | turn the diagnosis into a regreesion test (add small, hand-checkable cases that reproduced the behavioru you identify, asserting the relavant species lables, counts and any ordering required by the breif, to make correction repeatbale rather than visual inspection/ rerun both tests and full work flow, recheck all three tables) | Reran clean_silwood_trees.py and compared SHA-256 checksums for all three generated CSV files. All checksums were identical, confirming reproducible output on unchanged input.
-| clean silwood tree data | problem-solving appraoch and method implementation | trace one boarderline record | use distance = 100m as an example (see below)
+|---|---|---|---|
+| `clean_silwood_trees.py` | Code completeness and functional correctness | Difference in the species field of row 2 in `oak_species_counts.csv` in both test runs. | Independently checked the accepted oak records and confirmed four records for each species. Identified incorrect alphabetical ordering and added `oak_counts.sort(key=lambda item: item["species"])`. Reran the script and confirmed that `petraea` appeared before `robur`, as required by the metadata. |
+| `README.md` | Documentation | Explain the purpose of the data cleaner, how to run the script and tests from the project root, and which files are created. | Added tables documenting the purpose, execution commands, input and output files, pseudocode and limitations. |
+| General | Version-control practice | Commit coherent working changes with concise and descriptive commit messages. | Committed each functional correction separately, using concise commit messages describing the changes made. |
+| `clean_silwood_trees.py` | Basic error handling and input validation | Add a regression test checking species labels, counts and ordering. Rerun the tests and complete workflow, and recheck all three output tables. | Added a regression check for oak species ordering and counts. Reran `test_silwood_trees.py` successfully. Reran `clean_silwood_trees.py` and compared SHA-256 checksums for all three generated CSV files. All checksums were identical, confirming reproducible output on unchanged input. |
+| `clean_silwood_trees.py` | Problem-solving approach and method implementation | Trace one borderline record through the workflow. | Selected a record with `distance_m = 100`, the inclusive upper boundary specified in the metadata. Used this record to examine validation, record processing and its contribution to the oak species summary (see testing evidence below). |
 
+### Boundary record workflow test
+
+Run from the project root:
+
+```bash
 PYTHONPATH=code python3 - <<'PY'
 from clean_silwood_trees import process_records, summarise_oaks
 
@@ -166,7 +168,9 @@ assert clean_records[0]["distance_m"] == 100.0
 assert issues == []
 assert summarise_oaks(clean_records) == [{"species": "petraea", "count": 1}]
 PY
+```
 
+**Expected result:** All assertions pass without output. The record at the upper distance boundary of 100 m is accepted and contributes one count to `petraea`.
 
 
 
