@@ -1,6 +1,5 @@
 # My Git Practice Repository
 ## Table of Contents
-## Table of Contents
 
 - [Description](#description)
 - [Portfolio Structure](#portfolio-structure)
