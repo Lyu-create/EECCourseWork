@@ -583,8 +583,8 @@ assert summarise_oaks([
         "angle_degrees": 24.0,
     },
 ]) == [
-    {"species": "robur", "count": 2},
     {"species": "petraea", "count": 1},
+    {"species": "robur", "count": 2},
 ]
 
 # one species with zero count
