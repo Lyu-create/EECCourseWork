@@ -1,22 +1,29 @@
 # My Git Practice Repository
 ## Table of Contents
+## Table of Contents
 
 - [Description](#description)
 - [Portfolio Structure](#portfolio-structure)
 - [Dependencies](#dependencies)
 - [Getting Started](#getting-started)
 - [Testing and Reproducibility](#testing-and-reproducibility)
+- [Limitations and Future Improvements](#limitations-and-future-improvements)
 - [Approach to Formative Feedback](#approach-to-formative-feedback)
-- [Assignment 1 – Unix and Bash](#assignment-1-bash)
+- [Assignment 1 – Unix and Bash](#assignment-1--unix-and-bash)
+  - [Scripts, inputs and outputs](#scripts-inputs-and-outputs)
+  - [Response to formative feedback](#response-to-formative-feedback)
 - [Assignment 2 – Python: Cleaning Silwood Tree Data](#assignment-2--python-cleaning-silwood-tree-data)
+  - [Scripts, inputs and outputs](#scripts-inputs-and-outputs)
   - [Input data structure](#input-data-structure)
   - [Pseudocode](#pseudocode)
   - [Limitations](#limitations)
   - [Response to formative feedback](#response-to-formative-feedback-1)
   - [Boundary record workflow test](#boundary-record-workflow-test)
 - [Assignment 3 – R: Tree Height Calculation and Pound Hill Analysis](#assignment-3--r-tree-height-calculation-and-pound-hill-analysis)
+  - [Scripts, inputs and outputs](#scripts-inputs-and-outputs-1)
   - [Tree-height testing evidence](#treeheightr--testing-evidence)
   - [Tree-height validation tests](#tree-height-validation-tests)
+  - [Summary of validation results](#summary-of-validation-results)
   - [Response to formative feedback](#response-to-formative-feedback-2)
 - [Other Codes](#other-codes)
   - [Bash practice scripts (7)](#bash-practice-scripts-7)
@@ -41,7 +48,6 @@ received for Assignments 1–3.
 The coursework is based on the MulQuaBio coursebook and
 covers Unix, Shell scripting, Python and R.
 
-## Portfolio Structure
 ## Portfolio Structure
 
 ```text
@@ -165,6 +171,10 @@ The README commands were tested in a fresh clone of the repository by copying an
 
 Terminal and console outputs for the practice scripts can be checked against the corresponding examples in the [MulQuaBio coursebook](https://mulquabio.github.io/MQB/). Additional testing instructions and verification results are documented alongside the relevant scripts.
 
+## Limitations and Future Improvements
+
+Due to time constraints, I prioritised functional correctness, testing and reproducibility. Further improvements to code structure, readability and efficiency remain possible. I intend to continue refining these scripts after the Computing Bootcamp to consolidate my programming skills and develop better coding practices.
+
 
 
 ## Approach to Formative Feedback
@@ -172,6 +182,7 @@ Terminal and console outputs for the practice scripts can be checked against the
 Some repeated or overlapping feedback across assignments is addressed only once to avoid duplication. General feedback is addressed with a whole section: reproducibility is addressed with "Testing and reproducibility" section
 
 ## Assignment 1 – Unix and Bash
+### Scripts, inputs and outputs
 
 All commands should be run from the project root.
 
