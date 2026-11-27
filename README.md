@@ -173,24 +173,71 @@ All commands are run from the project root.
 | Reproducibility | Rerun the script and inspect the output. | The existing output is replaced, with no additional rows appended. |
 
 ### Tree-height validation tests
+1. TreeHeight.R
+ordindary case
+    Rscript code/TreeHeight.R
+    echo "$?"
+    expected and obseved: exit status is 0
+invalid case (e.g. distance = 0)
+    mkdir -p sandbox/treeheight_test
+    cp -r code data sandbox/treeheight_test/
+    cd sandbox/treeheight_test
+    Rscript -e 'd <- read.csv("data/trees.csv"); d$Distance.m[1] <- 0; write.csv(d, "data/trees.csv", row.names = FALSE)'
+    rm -f results/TreeHts.csv
+    Rscript code/TreeHeight.R 2> error.txt
+    echo "$?"
+    cat error.txt
+    test -f results/TreeHts.csv
+    echo "$?"
+    cd ../..
 
-| Test case | Command or test method | Expected output | Observed result |
-|---|---|---|---|
-| Reordered columns | | | |
-| Additional columns | | | |
-| Missing columns | | | |
-| `Distance.m` is character | | | |
-| `Distance.m` is infinite | | | |
-| `Distance.m < 0` | | | |
-| `Distance.m = 0` | | | |
-| `Distance.m = 100` | | | |
-| `Distance.m > 100` | | | |
-| `Angle.degrees` is character | | | |
-| `Angle.degrees` is infinite | | | |
-| `Angle.degrees < 0` | | | |
-| `Angle.degrees = 0` | | | |
-| `Angle.degrees = 90` | | | |
-| `Angle.degrees > 90` | | | |
+2. get_TreeHeight.R
+ordinary case
+    Rscript code/get_TreeHeight.R data/trees.csv
+    echo "$?"
+    expected and obseved: exit status is 0 
+invalid case
+    mkdir -p sandbox/get_treeheight_test
+    cp -r code data sandbox/get_treeheight_test/
+    cd sandbox/get_treeheight_test
+    Rscript -e 'd <- read.csv("data/trees.csv"); d$Distance.m[1] <- 0; write.csv(d, "data/trees.csv", row.names = FALSE)'
+    rm -f results/trees_treeheights.csv
+    Rscript code/get_TreeHeight.R data/trees.csv 2> error.txt
+    echo "$?"
+    cat error.txt
+    test -f results/trees_treeheights.csv
+    echo "$?"
+    cd ../..
+
+
+3. run_get_TreeHeight.sh
+ordinary case: 
+    bash code/run_get_TreeHeight.sh
+    echo "$?"
+    exit status is 0
+invalid case
+    mkdir -p sandbox/treeheight_test
+    cp -r code data sandbox/treeheight_test/
+    cd sandbox/treeheight_test
+    Rscript -e 'd <- read.csv("data/trees.csv"); d$Distance.m[1] <- 0; write.csv(d, "data/trees.csv", row.names = FALSE)'
+    rm -f results/TreeHts.csv
+    bash code/run_get_TreeHeight.sh 2> error.txt
+    echo "$?"
+    cat error.txt
+    test -f results/TreeHts.csv
+    echo "$?"#
+
+all three scripts should give
+| Check | Expected result |
+|---|---|
+| Script exit status | Non-zero (normally `1`) |
+| Error message in `error.txt` | `Distance.m is out of range` |
+| Output file existence test | `1` (file does not exist) | 
+
+
+   
+
+
 
 ### Response to formative feedback
 
