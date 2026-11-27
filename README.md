@@ -143,11 +143,33 @@ excluded from Git tracking.
 ### Shell dependencies
 - bc
 - ImageMagick (for tiff2_png.sh)
+```bash
+sudo apt update
+sudo apt install bc imagemagick
+```
+
 ### Python dependencies
-- IPython (optional, for interactive exercises)
+- IPython
+IPython is used for interactive Python exercises and debugging.
+
+```bash
+sudo apt install ipython3
+```
+
 ### R packages
 - tidyr
 - ggplot2
+- reshape2
+- tidyverse
+
+```bash
+Rscript -e 'install.packages(c("reshape2", "tidyverse"), repos = "https://cloud.r-project.org")'
+```
+
+The `tidyverse` package collection includes `tidyr`, `dplyr` and `ggplot2`, so these do not need to be installed separately.
+
+Dependencies do not need to be reinstalled when testing a fresh clone on the same computer.
+
 
 ## Getting Started
 Clone the repository using HTTPS:
@@ -464,7 +486,7 @@ generalised R script.
 
 ### Python practice scripts (12)
 
-All commands are run from the project root. For IPython commands, start an interactive session using `ipython`.
+All commands are run from the project root. For IPython commands, start an interactive session using `ipython3`.
 
 | Script | Bash command | IPython command | Input | Output | Description and checks |
 |---|---|---|---|---|---|
@@ -516,4 +538,3 @@ Copilot was used to run scripts according to the readme and help with pushing wh
 
 ## Acknowledgement
 I would like to thank Professor Pawar for writing such a wonderful book that is always updated to teach us to be multiligual in computer programming languages. I would also like to say thank you for his effort to provide formative feedback, which guided the revision and the improvement of this coursework.
-
