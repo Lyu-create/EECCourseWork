@@ -144,8 +144,10 @@ All commands are run from the project root.
 | README.md | documentation | make it more useful (add purpose of data cleaner, how to run the script and test for root, the files created)
 | README.md | Documentation | test instruction in a newly cloned copy of repository with git clone, enter the folder and run each readme command exactly as written. if something fials, correct the command or add the missing step
 | general | version control practice | check for one coherent wotking change (and then write concise meessage for the name of the change and why it is needed when not obvious)
-| clean silwood tree data | basic error handling and input validation | turn the diagnosis into a regreesion test (add small, hand-checkable cases that reproduced the behavioru you identify, asserting the relavant species lables, counts and any ordering required by the breif, to make correction repeatbale rather than visual inspection/ rerun both tests and full work flow, recheck all three tables)
+| clean silwood tree data | basic error handling and input validation | turn the diagnosis into a regreesion test (add small, hand-checkable cases that reproduced the behavioru you identify, asserting the relavant species lables, counts and any ordering required by the breif, to make correction repeatbale rather than visual inspection/ rerun both tests and full work flow, recheck all three tables) | Reran clean_silwood_trees.py and compared SHA-256 checksums for all three generated CSV files. All checksums were identical, confirming reproducible output on unchanged input.
 | clean silwood tree data | problem-solving appraoch and method implementation | trace one boarderline record |
+
+
 
 
 
