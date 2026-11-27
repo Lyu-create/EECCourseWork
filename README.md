@@ -173,67 +173,115 @@ All commands are run from the project root.
 | Reproducibility | Rerun the script and inspect the output. | The existing output is replaced, with no additional rows appended. |
 
 ### Tree-height validation tests
-1. TreeHeight.R
-ordindary case
-    Rscript code/TreeHeight.R
-    echo "$?"
-    expected and obseved: exit status is 0
-invalid case (e.g. distance = 0)
-    mkdir -p sandbox/treeheight_test
-    cp -r code data sandbox/treeheight_test/
-    cd sandbox/treeheight_test
-    Rscript -e 'd <- read.csv("data/trees.csv"); d$Distance.m[1] <- 0; write.csv(d, "data/trees.csv", row.names = FALSE)'
-    rm -f results/TreeHts.csv
-    Rscript code/TreeHeight.R 2> error.txt
-    echo "$?"
-    cat error.txt
-    test -f results/TreeHts.csv
-    echo "$?"
-    cd ../..
 
-2. get_TreeHeight.R
-ordinary case
-    Rscript code/get_TreeHeight.R data/trees.csv
-    echo "$?"
-    expected and obseved: exit status is 0 
-invalid case
-    mkdir -p sandbox/get_treeheight_test
-    cp -r code data sandbox/get_treeheight_test/
-    cd sandbox/get_treeheight_test
-    Rscript -e 'd <- read.csv("data/trees.csv"); d$Distance.m[1] <- 0; write.csv(d, "data/trees.csv", row.names = FALSE)'
-    rm -f results/trees_treeheights.csv
-    Rscript code/get_TreeHeight.R data/trees.csv 2> error.txt
-    echo "$?"
-    cat error.txt
-    test -f results/trees_treeheights.csv
-    echo "$?"
-    cd ../..
+Each tree-height route was tested using ordinary and invalid inputs.
+For invalid-input tests, a disposable copy of the repository was used
+to preserve the original dataset.
 
+#### 1. `TreeHeight.R`
 
-3. run_get_TreeHeight.sh
-ordinary case: 
-    bash code/run_get_TreeHeight.sh
-    echo "$?"
-    exit status is 0
-invalid case
-    mkdir -p sandbox/treeheight_test
-    cp -r code data sandbox/treeheight_test/
-    cd sandbox/treeheight_test
-    Rscript -e 'd <- read.csv("data/trees.csv"); d$Distance.m[1] <- 0; write.csv(d, "data/trees.csv", row.names = FALSE)'
-    rm -f results/TreeHts.csv
-    bash code/run_get_TreeHeight.sh 2> error.txt
-    echo "$?"
-    cat error.txt
-    test -f results/TreeHts.csv
-    echo "$?"#
+**Ordinary case**
 
-all three scripts should give
-| Check | Expected result |
-|---|---|
-| Script exit status | Non-zero (normally `1`) |
-| Error message in `error.txt` | `Distance.m is out of range` |
-| Output file existence test | `1` (file does not exist) | 
+```bash
+Rscript code/TreeHeight.R
+echo "$?"
+```
 
+Expected and observed exit status: `0`.
+
+**Invalid case (`Distance.m = 0`)**
+
+```bash
+mkdir -p sandbox/treeheight_test
+cp -r code data sandbox/treeheight_test/
+cd sandbox/treeheight_test
+
+Rscript -e 'd <- read.csv("data/trees.csv"); d$Distance.m[1] <- 0; write.csv(d, "data/trees.csv", row.names = FALSE)'
+
+rm -f results/TreeHts.csv
+Rscript code/TreeHeight.R 2> error.txt
+echo "$?"
+cat error.txt
+
+test -f results/TreeHts.csv
+echo "$?"
+
+cd ../..
+```
+
+#### 2. `get_TreeHeight.R`
+
+**Ordinary case**
+
+```bash
+Rscript code/get_TreeHeight.R data/trees.csv
+echo "$?"
+```
+
+Expected and observed exit status: `0`.
+
+**Invalid case (`Distance.m = 0`)**
+
+```bash
+mkdir -p sandbox/get_treeheight_test
+cp -r code data sandbox/get_treeheight_test/
+cd sandbox/get_treeheight_test
+
+Rscript -e 'd <- read.csv("data/trees.csv"); d$Distance.m[1] <- 0; write.csv(d, "data/trees.csv", row.names = FALSE)'
+
+rm -f results/trees_treeheights.csv
+Rscript code/get_TreeHeight.R data/trees.csv 2> error.txt
+echo "$?"
+cat error.txt
+
+test -f results/trees_treeheights.csv
+echo "$?"
+
+cd ../..
+```
+
+#### 3. `run_get_TreeHeight.sh`
+
+**Ordinary case**
+
+```bash
+bash code/run_get_TreeHeight.sh
+echo "$?"
+```
+
+Expected and observed exit status: `0`.
+
+**Invalid case (`Distance.m = 0`)**
+
+```bash
+mkdir -p sandbox/wrapper_treeheight_test
+cp -r code data sandbox/wrapper_treeheight_test/
+cd sandbox/wrapper_treeheight_test
+
+Rscript -e 'd <- read.csv("data/trees.csv"); d$Distance.m[1] <- 0; write.csv(d, "data/trees.csv", row.names = FALSE)'
+
+rm -f results/trees_treeheights.csv
+bash code/run_get_TreeHeight.sh 2> error.txt
+echo "$?"
+cat error.txt
+
+test -f results/trees_treeheights.csv
+echo "$?"
+
+cd ../..
+```
+
+#### Summary of validation results
+
+| Script | Ordinary exit status | Invalid exit status | Invalid error message | New output from invalid input | Result |
+|---|---|---|---|---|---|
+| `TreeHeight.R` | 0 | 1 | Distance.m is out of range | None | Pass |
+| `get_TreeHeight.R` | 0 | 1 | Distance.m is out of range | None | Pass |
+| `run_get_TreeHeight.sh` | 0 | 1 | Distance.m is out of range | None | Pass |
+
+All three routes successfully processed the ordinary dataset and rejected
+the invalid input. The Bash wrapper also propagated the failure of the
+generalised R script.
 
    
 
