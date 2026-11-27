@@ -62,7 +62,7 @@ Terminal and console outputs for the practice scripts can be checked against the
 --------------------------------------------------------------
 ## Approach to Formative Feedback
 
-Some repeated or overlapping feedback across assignments is addressed only once to avoid duplication.
+Some repeated or overlapping feedback across assignments is addressed only once to avoid duplication. General feedback is addressed with a whole section: reproducibility is addressed with "Testing and reproducibility" section
 
 ## Assignment 1 (bash)
 ### Assignment 1 – Unix and Shell Scripting
