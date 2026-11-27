@@ -317,22 +317,21 @@ generalised R script.
 
 | Practical / File | Feedback category | Feedback received | Changes made and verification |
 |---|---|---|---|
-| General | Repository organisation and workflow discipline | Make output creation reproducible from a newly cloned repository. | Scripts create `results/` when needed. |
-| General | Code quality and style | Keep variable names descriptive, use comments and avoid repeating calculations. | |
-| `README.md` | Documentation | Provide sufficient information for readers to repeat the checks. | Provide exact execution and testing commands in `README.md`. |
-| Git commits | Version-control practice | Make the development history easier to follow. | Commit individual functional revisions with concise commit messages. |
-| `pound_hill_analysis.R` | Problem-solving approach and method implementation | Keep interactive viewing outside the required batch execution | replace it with console-friendly inspection|
-| `pound_hill_analysis.R` | Problem-solving approach and method implementation | Zero counts were filtered out. | Although the number of quadrats do not affect richness between filtering out zero before and after grouping, the filter is applied aftering grouping so a quadrat will not be deleted if it has a zero count. Grouping is also performed directly on MyWrangledData in calculating abudance data|
-| Plot generation | Problem-solving approach and method implementation | Print each plot during execution and close its PDF device before opening the next. | close the richness plot before creating the abundance plot and use the print command|
-| Plot generation | Testing and verification | Inspect generated plots after rerunning the script. | Inspect axis labels, plotted values and biological meaning. |
-| `README.md` | Documentation | Refresh the repository file listing. | |
-| Tree-height scripts | Testing and verification | Rerun one ordinary and one invalid case for each tree-height route. Check stderr, exit behaviour and whether any new result is written. A failed run should not leave a misleading new output. | |
+| General | Repository organisation and workflow discipline | Make output creation reproducible from a newly cloned repository. | Added automatic creation of `results/` when needed. |
+| `README.md` | Documentation | Provide sufficient information for readers to repeat the checks. | Added exact execution commands, input and output paths, testing instructions and observed results. |
+| Git commits | Version-control practice | Make the development history easier to follow. | Committed individual functional corrections with concise, descriptive commit messages. |
+| `pound_hill_analysis.R` | Problem-solving approach and method implementation | Keep interactive viewing outside the required batch execution. | Replaced `View(MyWrangledData)` with `print(head(MyWrangledData))`. Confirmed successful execution using `Rscript`. |
+| `pound_hill_analysis.R` | Problem-solving approach and method implementation | Zero counts were filtered out. | Compared the number of quadrats before and after filtering and confirmed that no quadrats were lost in the supplied dataset. Removed preliminary filtering and applied `Count > 0` within each quadrat's richness calculation. Calculated abundance directly from `MyWrangledData`. Confirmed that all quadrats were retained and both plot-level summaries contained 12 plots. Independently verified richness (7 species) and abundance (201 individuals) for Plot 1, Quadrat Q1. |
+| Plot generation | Problem-solving approach and method implementation | Print each plot during execution and close its PDF device before opening the next. | Added explicit `print()` and `dev.off()` calls for both richness and abundance figures. Confirmed successful generation of both PDF files. |
+| Plot generation | Testing and verification | Inspect generated plots after rerunning the script. | Reran the analysis and inspected both PDF figures, including axis labels and plotted values. Compared SHA-256 checksums of the richness CSV across repeated runs and confirmed identical contents. |
+| `README.md` | Documentation | Refresh the repository file listing. | Updated the README to include all 39 required coursework files, together with their execution instructions. |
+| Tree-height scripts | Testing and verification | Rerun one ordinary and one invalid case for each tree-height route. Check stderr, exit behaviour and whether any new result is written. A failed run should not leave a misleading new output. | Tested `TreeHeight.R`, `get_TreeHeight.R` and `run_get_TreeHeight.sh` with ordinary and invalid inputs. Ordinary runs returned exit status `0`. Invalid runs using a distance of `0` returned non-zero exit statuses, produced informative error messages on stderr and created no new output files. Invalid-input tests were performed in disposable sandbox directories to preserve the original dataset (see Tree-height validation tests above). |
 
 
 
 ---------------------------------------------------------------
 ## Other Codes
-bash scripts (7)
+
 ### Bash practice scripts (7)
 
 | Script | Run command and testing instructions | Input | Output | Description and checks |
