@@ -51,6 +51,8 @@ the project root unless otherwise specified.
 ## Testing and Reproducibility
 The README commands were tested in a fresh clone of the repository by copying and executing them from the project root. Copilot in VS Code was also used to assist with code review and testing.
 
+Terminal and console outputs for the practice scripts can be checked against the corresponding examples in the [MulQuaBio coursebook](https://mulquabio.github.io/MQB/). Additional testing instructions and verification results are documented alongside the relevant scripts.
+
 ## Table of contents
 - Assignment 1
 - Assignment 2
@@ -61,7 +63,7 @@ The README commands were tested in a fresh clone of the repository by copying an
 ## Approach to Formative Feedback
 
 Some repeated or overlapping feedback across assignments is addressed only once to avoid duplication.
----------------------------------------------------------------
+
 ## Assignment 1 (bash)
 ### Assignment 1 – Unix and Shell Scripting
 
