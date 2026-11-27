@@ -145,7 +145,27 @@ All commands are run from the project root.
 | README.md | Documentation | test instruction in a newly cloned copy of repository with git clone, enter the folder and run each readme command exactly as written. if something fials, correct the command or add the missing step
 | general | version control practice | check for one coherent wotking change (and then write concise meessage for the name of the change and why it is needed when not obvious)
 | clean silwood tree data | basic error handling and input validation | turn the diagnosis into a regreesion test (add small, hand-checkable cases that reproduced the behavioru you identify, asserting the relavant species lables, counts and any ordering required by the breif, to make correction repeatbale rather than visual inspection/ rerun both tests and full work flow, recheck all three tables) | Reran clean_silwood_trees.py and compared SHA-256 checksums for all three generated CSV files. All checksums were identical, confirming reproducible output on unchanged input.
-| clean silwood tree data | problem-solving appraoch and method implementation | trace one boarderline record |
+| clean silwood tree data | problem-solving appraoch and method implementation | trace one boarderline record | use distance = 100m as an example (see below)
+
+PYTHONPATH=code python3 - <<'PY'
+from clean_silwood_trees import process_records, summarise_oaks
+
+boundary_record = {
+    "record_id": "ST014",
+    "location": "Silwood Bottom",
+    "genus": "Quercus",
+    "species": "petraea",
+    "distance_m": "100",
+    "angle_degrees": "24.0",
+}
+
+clean_records, issues = process_records([boundary_record])
+
+assert len(clean_records) == 1
+assert clean_records[0]["distance_m"] == 100.0
+assert issues == []
+assert summarise_oaks(clean_records) == [{"species": "petraea", "count": 1}]
+PY
 
 
 
