@@ -236,7 +236,11 @@ def summarise_oaks(clean_records: Iterable[dict[str, str]]) -> list[dict[str, st
     if count_Quercus_robur > 0:
         oak_counts.append({"species":"robur","count": count_Quercus_robur})
     if count_Quercus_petraea > 0:
+     
         oak_counts.append({"species":"petraea","count": count_Quercus_petraea})
+    # Sort oak species alphabetically
+    oak_counts.sort(key=lambda item: item["species"])
+    
     return oak_counts
 
 def write_csv(
