@@ -57,6 +57,7 @@ MyData$height_m <- TreeHeight(MyData$Angle.degrees, MyData$Distance.m)
 head(MyData)
 
 # save
+dir.create("results", showWarnings = FALSE)
 output_name <- tools::file_path_sans_ext(basename(input_path))
 output_path <- file.path("results", paste0(output_name, "_treeheights.csv"))
 write.csv(MyData, output_path, row.names = FALSE)

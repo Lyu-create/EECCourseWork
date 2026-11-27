@@ -2,6 +2,8 @@
 # Run from the coursework project root with:
 # Rscript code/basic_io.R
 
+dir.create("results", showWarnings = FALSE)
+
 MyData <-read.csv("data/trees.csv", header = TRUE) # Import with headers
 
 write.csv(MyData, "results/MyData.csv") # Write it as a new file

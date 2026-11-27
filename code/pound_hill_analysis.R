@@ -2,6 +2,8 @@
 # Run from the coursework project root with:
 # Rscript code/pound_hill_analysis.R
 
+dir.create("results", showWarnings = FALSE)
+
 getwd()
 
 # load data
@@ -108,11 +110,6 @@ Abundance$Plot <-factor(Abundance$Plot, levels = c(1:12))
 Plotmeanabundance <- Abundance %>%
     group_by (Plot, Cultivation, Block) %>%
         summarise(MeanAbundance = mean(Abundance), .groups = "drop") 
-
-# creat results directory if it doesn't exist
-if (!dir.exists("results")) {
-    dir.create("results")
-}
 
 require(ggplot2)
 pdf("results/pound_hill_plot_abundance.pdf")
